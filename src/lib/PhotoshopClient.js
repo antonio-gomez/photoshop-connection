@@ -13,17 +13,10 @@
 
 'use strict'
 
-import { PhotoshopClient } from './lib/PhotoshopClient'
+const photoshop = require('./vendor/Photoshop')
 
-// Factory class
-class Photoshop {
-    constructor() {
-        //
-    }
-    
-    createClient(options) {
-        return new PhotoshopClient(options)
+export class PhotoshopClient {
+    constructor(options) {
+        this.options = options
     }
 }
-
-export let photoshop = new Photoshop()

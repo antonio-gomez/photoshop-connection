@@ -12,6 +12,8 @@ module.exports = {
     // Ignoring libraries that are not intended for
     // in-browser usage: https://github.com/webpack/react-starter/issues/3
     node: {
-        net: 'empty'
+        net: 'empty',
+        fs: 'empty',
+        crypto: 'empty'
     }
 }
