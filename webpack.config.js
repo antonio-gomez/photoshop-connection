@@ -2,6 +2,7 @@ module.exports = {
     entry: `${__dirname}/src/photoshop-connection.js`,
     output: {
         path: `${__dirname}/dist`,
+        libraryTarget: 'commonjs2',
         filename: 'photoshop-connection.js'
     },
     module: {

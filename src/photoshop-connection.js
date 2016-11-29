@@ -27,3 +27,4 @@ class Photoshop {
 }
 
 export let photoshop = new Photoshop()
+module.exports = new Photoshop()
