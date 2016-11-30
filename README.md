@@ -15,7 +15,7 @@ npm install photoshop-connection --save
 #### Description
 -----------
 
-Node.js module for connecting to Adobe Photoshop Server. Based on connection libraries of [Adobe Generator][0].
+Node.js module for connecting to Adobe Photoshop Server. Based on the connection libraries of [Adobe Generator][0].
 
 
 #### Usage
