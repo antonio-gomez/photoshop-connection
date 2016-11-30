@@ -15,14 +15,23 @@
 
 import { PhotoshopClient } from './lib/PhotoshopClient'
 
-// Factory class
 class Photoshop {
     constructor() {
         //
     }
     
     createClient(options) {
-        return new PhotoshopClient(options)
+		const photoshopClient = new PhotoshopClient(options)
+		
+		return new Promise((resolve, reject) => {
+			photoshopClient.connectToPhotoshop()
+				.then((photoshopClient) => {
+					resolve(photoshopClient)
+				})
+				.catch((err) => {
+					reject(err)
+				})
+		})
     }
 }
 

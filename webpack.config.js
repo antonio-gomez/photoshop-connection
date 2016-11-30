@@ -1,4 +1,18 @@
+/*
+ *
+ *  Photoshop-Connection
+ *  Node.js module for connecting to Adobe Photoshop Server.
+ *  Author: Antonio Gomez (https://github.com/antonio-gomez)
+ * 
+ *
+ *  @link https://github.com/antonio-gomez/photoshop-connection
+ *  @version v0.0.0
+ *  @license MIT
+ *
+ */
+
 module.exports = {
+	target: 'node',
     entry: `${__dirname}/src/photoshop-connection.js`,
     output: {
         path: `${__dirname}/dist`,
@@ -9,12 +23,5 @@ module.exports = {
         loaders: [
             { test: /\.js$/, loader: 'babel', query: { presets: ['es2015'] } }
         ]
-    },
-    // Ignoring libraries that are not intended for
-    // in-browser usage: https://github.com/webpack/react-starter/issues/3
-    node: {
-        net: 'empty',
-        fs: 'empty',
-        crypto: 'empty'
     }
 }

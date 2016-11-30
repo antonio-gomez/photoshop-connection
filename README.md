@@ -22,7 +22,7 @@ Node.js module for connecting to Adobe Photoshop Server.
 --------
 
 ```
-const photoshop = require('photoshop-connection')
+const photoshopConnection = require('photoshop-connection')
 
 let options = {
     hostname: '127.0.0.1',
@@ -30,13 +30,13 @@ let options = {
     port: 49494
 }
 
-photoshop.createClient(options)
-    .then((photoshopClient) => {
-        photoshopClient.sendCommand('alert("Hello World!")')
-    })
-    .catch((err) => {
-        console.log(err)
-    })
+photoshopConnection.createClient(options)
+	.then((photoshopClient) => {
+		photoshopClient.sendCommand(`alert('Hello from ExtendScript!');`)
+	})
+	.catch((err) => {
+		console.log(`Connection Error: ${err}`)
+	})
 ```
 
 
