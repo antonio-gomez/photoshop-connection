@@ -1,6 +1,6 @@
 {
   "name": "photoshop-connection",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Node.js module for connecting to Adobe Photoshop Server",
   "main": "./dist/photoshop-connection.js",
   "directories": {
@@ -40,7 +40,7 @@
   "bugs": {
     "url": "https://github.com/antonio-gomez/photoshop-connection/issues"
   },
-  "homepage": "https://github.com/antonio-gomez/photoshop-dom-event#readme",
+  "homepage": "https://github.com/antonio-gomez/photoshop-connection#readme",
   "devDependencies": {
     "webpack": "^1.13.3",
     "babel-core": "^6.18.2",
