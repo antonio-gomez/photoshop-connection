@@ -6,7 +6,7 @@ module.exports=function(e){function t(r){if(n[r])return n[r].exports;var o=n[r]=
 	 * 
 	 *
 	 *  @link https://github.com/antonio-gomez/photoshop-connection
-	 *  @version v0.0.0
+	 *  @version v1.0.0
 	 *  @license MIT
 	 *
 	 */
@@ -44,7 +44,7 @@ module.exports=function(e){function t(r){if(n[r])return n[r].exports;var o=n[r]=
 	 * 
 	 *
 	 *  @link https://github.com/antonio-gomez/photoshop-connection
-	 *  @version v0.0.0
+	 *  @version v1.0.0
 	 *  @license MIT
 	 *
 	 */
