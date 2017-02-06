@@ -1,6 +1,6 @@
 ## Photoshop-Connection
 
-[![npm-image](https://img.shields.io/badge/npm-v1.0.0-ff69b4.svg)](https://www.npmjs.com/package/photoshop-connection)
+[![npm-image](https://img.shields.io/badge/npm-v1.1.0-ff69b4.svg)](https://www.npmjs.com/package/photoshop-connection)
 ![version-image](https://img.shields.io/badge/license-MIT-ff69b4.svg)
 
 

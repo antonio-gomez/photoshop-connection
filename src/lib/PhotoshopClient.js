@@ -6,12 +6,14 @@
  * 
  *
  *  @link https://github.com/antonio-gomez/photoshop-connection
- *  @version v1.0.0
+ *  @version v1.1.0
  *  @license MIT
  *
  */
 
 'use strict'
+
+import { PhotoshopHelper } from './PhotoshopHelper'
 
 const photoshop = require('./vendor/Photoshop')
 
@@ -27,10 +29,11 @@ export class PhotoshopClient {
 		return new Promise((resolve, reject) => {
 			this._photoshop.once('connect', () => {
 				console.log(`Connected to Photoshop on port ${this.options.port}`)
-				resolve(this._photoshop)
+				resolve(new PhotoshopHelper(this._photoshop))
 			})
 			
 			this._photoshop.on('error', (err) => {
+				console.log(err)
 				reject(err)
 			})
     	})

@@ -1,4 +1,51 @@
-module.exports=function(e){function t(r){if(n[r])return n[r].exports;var o=n[r]={exports:{},id:r,loaded:!1};return e[r].call(o.exports,o,o.exports,t),o.loaded=!0,o.exports}var n={};return t.m=e,t.c=n,t.p="",t(0)}([function(e,t,n){/*
+module.exports =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
 	 *
 	 *  Photoshop-Connection
 	 *  Node.js module for connecting to Adobe Photoshop Server.
@@ -6,11 +53,739 @@ module.exports=function(e){function t(r){if(n[r])return n[r].exports;var o=n[r]=
 	 * 
 	 *
 	 *  @link https://github.com/antonio-gomez/photoshop-connection
-	 *  @version v1.0.0
+	 *  @version v1.1.0
 	 *  @license MIT
 	 *
 	 */
-"use strict";function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0}),t.photoshop=void 0;var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(3),c=function(){function e(){r(this,e)}return o(e,[{key:"createClient",value:function(e){var t=new i.PhotoshopClient(e);return new Promise(function(e,n){t.connectToPhotoshop().then(function(t){e(t)}).catch(function(e){n(e)})})}}]),e}();t.photoshop=new c;e.exports=new c},function(e,t,n){var r,o;(function(e){"use strict";var i="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};/*!
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.photoshop = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _PhotoshopClient = __webpack_require__(1);
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Photoshop = function () {
+	  function Photoshop() {
+	    //
+
+	    _classCallCheck(this, Photoshop);
+	  }
+
+	  _createClass(Photoshop, [{
+	    key: 'createClient',
+	    value: function createClient(options) {
+	      var photoshopClient = new _PhotoshopClient.PhotoshopClient(options);
+
+	      return new Promise(function (resolve, reject) {
+	        photoshopClient.connectToPhotoshop().then(function (photoshopClient) {
+	          resolve(photoshopClient);
+	        }).catch(function (err) {
+	          reject(err);
+	        });
+	      });
+	    }
+	  }]);
+
+	  return Photoshop;
+	}();
+
+	var photoshop = exports.photoshop = new Photoshop();
+	module.exports = new Photoshop();
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	 *
+	 *  Photoshop-Connection
+	 *  Node.js module for connecting to Adobe Photoshop Server.
+	 *  Author: Antonio Gomez (https://github.com/antonio-gomez)
+	 * 
+	 *
+	 *  @link https://github.com/antonio-gomez/photoshop-connection
+	 *  @version v1.1.0
+	 *  @license MIT
+	 *
+	 */
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.PhotoshopClient = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _PhotoshopHelper = __webpack_require__(11);
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var photoshop = __webpack_require__(2);
+
+	var PhotoshopClient = exports.PhotoshopClient = function () {
+		function PhotoshopClient(options) {
+			_classCallCheck(this, PhotoshopClient);
+
+			this.options = options;
+			this._photoshop = null;
+		}
+
+		_createClass(PhotoshopClient, [{
+			key: 'connectToPhotoshop',
+			value: function connectToPhotoshop() {
+				var _this = this;
+
+				this._photoshop = photoshop.createClient(this.options);
+
+				return new Promise(function (resolve, reject) {
+					_this._photoshop.once('connect', function () {
+						console.log('Connected to Photoshop on port ' + _this.options.port);
+						resolve(new _PhotoshopHelper.PhotoshopHelper(_this._photoshop));
+					});
+
+					_this._photoshop.on('error', function (err) {
+						console.log(err);
+						reject(err);
+					});
+				});
+			}
+		}]);
+
+		return PhotoshopClient;
+	}();
+
+/***/ },
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	/*
+	 * Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
+	 *  
+	 * Permission is hereby granted, free of charge, to any person obtaining a
+	 * copy of this software and associated documentation files (the "Software"), 
+	 * to deal in the Software without restriction, including without limitation 
+	 * the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+	 * and/or sell copies of the Software, and to permit persons to whom the 
+	 * Software is furnished to do so, subject to the following conditions:
+	 *  
+	 * The above copyright notice and this permission notice shall be included in
+	 * all copies or substantial portions of the Software.
+	 *  
+	 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	 * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+	 * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	 * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+	 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+	 * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+	 * DEALINGS IN THE SOFTWARE.
+	 * 
+	 */
+
+	(function () {
+	    "use strict";
+
+	    // Dependencies
+	    // ------------
+
+	    var util = __webpack_require__(3),
+	        EventEmitter = __webpack_require__(4).EventEmitter,
+	        net = __webpack_require__(5),
+	        Q = __webpack_require__(6),
+	        psCrypto = __webpack_require__(8);
+
+	    // Constants
+	    // ---------
+
+	    // Connection constants
+	    var DEFAULT_PASSWORD = "password",
+	        DEFAULT_PORT = 49494,
+	        DEFAULT_HOSTNAME = "127.0.0.1",
+	        SOCKET_KEEPALIVE_DELAY = 1000; //milliseconds
+
+	    var CONNECTION_STATES = {
+	        NONE: 0,
+	        CONNECTING: 1,
+	        OPEN: 2,
+	        CLOSING: 3,
+	        CLOSED: 4,
+	        DESTROYED: 5
+	    };
+
+	    // Protocol constants
+	    var MESSAGE_LENGTH_OFFSET = 0,
+	        MESSAGE_STATUS_OFFSET = 4,
+	        MESSAGE_STATUS_LENGTH = 4,
+	        MESSAGE_PAYLOAD_OFFSET = MESSAGE_STATUS_OFFSET + MESSAGE_STATUS_LENGTH,
+	        PAYLOAD_HEADER_LENGTH = 12,
+	        PAYLOAD_PROTOCOL_OFFSET = 0,
+	        PAYLOAD_ID_OFFSET = 4,
+	        PAYLOAD_TYPE_OFFSET = 8,
+	        MAX_MESSAGE_ID = 256 * 256 * 256,
+	        PROTOCOL_VERSION = 1,
+	        MESSAGE_TYPE_ERROR = 1,
+	        MESSAGE_TYPE_JAVASCRIPT = 2,
+	        MESSAGE_TYPE_PIXMAP = 3,
+	        MESSAGE_TYPE_ICC_PROFILE = 4,
+	        MESSAGE_TYPE_KEEPALIVE = 6,
+	        STATUS_NO_COMM_ERROR = 0;
+
+	    // 64 kB (maximum size of the TCP packages on the Mac)
+	    var INITIAL_MESSAGE_BUFFER_SIZE = 65536,
+
+	    // Known strings to be sent as messages, that should not be parsed as JSON
+	    KNOWN_LITERAL_STRING_MESSAGES = ["", "[ActionDescriptor]", "Yep, still alive"];
+
+	    // Helper Functions
+	    // ----------------
+
+	    function ensureBufferSize(buffer, minimumSize, contentSize) {
+	        if (buffer.length >= minimumSize) {
+	            return buffer;
+	        }
+	        var newBuffer = new Buffer(minimumSize);
+	        if (contentSize) {
+	            buffer.copy(newBuffer, 0, 0, contentSize);
+	        } else {
+	            buffer.copy(newBuffer);
+	        }
+	        return newBuffer;
+	    }
+
+	    function round(value, decimals) {
+	        var factor = Math.pow(10, decimals);
+	        return Math.round(factor * value) / factor;
+	    }
+
+	    /**
+	     * PhotoshopClient Class
+	     * 
+	     * @constructor
+	     */
+	    function PhotoshopClient(options, connectListener, logger) {
+	        var self = this;
+
+	        if (!(self instanceof PhotoshopClient)) {
+	            return new PhotoshopClient(options, connectListener, logger);
+	        } else {
+	            var password = DEFAULT_PASSWORD;
+
+	            if (options.hasOwnProperty("password")) {
+	                password = options.password;
+	            }
+	            if (options.hasOwnProperty("port")) {
+	                self._port = options.port;
+	            }
+	            if (options.hasOwnProperty("hostname")) {
+	                self._hostname = options.hostname;
+	            }
+	            if (options.hasOwnProperty("inputFd")) {
+	                self._inputFd = options.inputFd;
+	            }
+	            if (options.hasOwnProperty("outputFd")) {
+	                self._outputFd = options.outputFd;
+	            }
+
+	            self._logger = logger;
+	            self._receiveBuffer = new Buffer(INITIAL_MESSAGE_BUFFER_SIZE);
+	            self._receivedBytes = 0;
+	            self._writeQueue = [];
+
+	            if (connectListener) {
+	                this.once("connect", connectListener);
+	            }
+
+	            var connectionPromise = null;
+	            var cryptoPromise = null;
+
+	            if (typeof self._inputFd === "number" && typeof self._outputFd === "number" || typeof self._inputFd === "string" && typeof self._outputFd === "string") {
+	                connectionPromise = self._connectPipe();
+	                var cryptoDeferred = Q.defer();
+	                cryptoDeferred.resolve();
+	                cryptoPromise = cryptoDeferred.promise;
+	            } else if (self._hostname && typeof self._port === "number") {
+	                connectionPromise = self._connectSocket();
+	                cryptoPromise = self._initCrypto(password);
+	            } else {
+	                var connectionDeferred = Q.defer();
+	                connectionDeferred.reject();
+	                connectionPromise = connectionDeferred.promise;
+	            }
+
+	            Q.all([connectionPromise, cryptoPromise]).done(function () {
+	                self.emit("connect");
+	            }, function (err) {
+	                self.emit("error", err);
+	                self.disconnect();
+	            });
+	        }
+	    }
+	    util.inherits(PhotoshopClient, EventEmitter);
+
+	    // Member Variables
+	    // ----------------
+
+	    PhotoshopClient.prototype._port = DEFAULT_PORT;
+	    PhotoshopClient.prototype._hostname = DEFAULT_HOSTNAME;
+	    PhotoshopClient.prototype._connectionState = CONNECTION_STATES.NONE;
+	    PhotoshopClient.prototype._lastMessageID = 0;
+	    PhotoshopClient.prototype._crypto = null;
+	    PhotoshopClient.prototype._receiveBuffer = null;
+	    PhotoshopClient.prototype._receivedBytes = 0;
+	    PhotoshopClient.prototype._writeQueue = null;
+	    PhotoshopClient.prototype._commandDeferreds = null;
+
+	    // Methods
+	    // -------
+
+	    PhotoshopClient.prototype._initCrypto = function (password) {
+	        var self = this;
+	        var cryptoDeferred = Q.defer();
+	        psCrypto.createPSCrypto(password, function (err, crypto) {
+	            if (err) {
+	                cryptoDeferred.reject(err);
+	            } else {
+	                self._crypto = crypto;
+	                cryptoDeferred.resolve();
+	            }
+	        });
+	        return cryptoDeferred.promise;
+	    };
+
+	    PhotoshopClient.prototype._connectPipe = function () {
+	        var self = this;
+	        var fs = __webpack_require__(10);
+	        var result = false;
+
+	        try {
+	            self._connectionState = CONNECTION_STATES.CONNECTING;
+
+	            if (typeof self._inputFd === "number") {
+	                self._readStream = fs.createReadStream(null, { fd: self._inputFd });
+	            } else {
+	                // named pipe
+	                self.emit("info", "using named read pipe " + self._inputFd);
+	                self._readStream = fs.createReadStream(self._inputFd);
+	            }
+
+	            self._readStream.on("data", function (incomingBuffer) {
+	                var isNewMessage = self._receivedBytes === 0,
+	                    minimumSize = incomingBuffer.length + self._receivedBytes;
+
+	                self._receiveBuffer = ensureBufferSize(self._receiveBuffer, minimumSize);
+	                incomingBuffer.copy(self._receiveBuffer, self._receivedBytes);
+	                self._receivedBytes += incomingBuffer.length;
+
+	                self._processReceiveBuffer(isNewMessage);
+	            });
+
+	            self._readStream.on("error", function (err) {
+	                self.emit("error", "Pipe read error: " + err);
+	                self.disconnect();
+	            });
+
+	            self._readStream.on("close", function () {
+	                self._connectionState = CONNECTION_STATES.CLOSED;
+	                self.emit("close");
+	            });
+
+	            self._readStream.resume();
+
+	            if (typeof self._outputFd === "number") {
+	                self._writeStream = fs.createWriteStream(null, { fd: self._outputFd });
+	            } else {
+	                // named pipe
+	                self.emit("info", "using named write pipe " + self._outputFd);
+	                self._writeStream = fs.createWriteStream(self._outputFd);
+	            }
+
+	            self._writeStream.on("error", function (err) {
+	                self.emit("error", "Pipe write error: " + err);
+	                self.disconnect();
+	            });
+
+	            self._writeStream.on("close", function () {
+	                self._connectionState = CONNECTION_STATES.CLOSED;
+	                self.emit("close");
+	            });
+
+	            self._writeStream.on("drain", function () {
+	                self._doPendingWrites();
+	            });
+
+	            result = true;
+	        } catch (e) {
+	            self.emit("error", "Connect Pipe error: " + e);
+	            self.disconnect();
+	        }
+
+	        return result;
+	    };
+
+	    PhotoshopClient.prototype._connectSocket = function () {
+	        var self = this;
+	        var connectSocketDeferred = Q.defer();
+
+	        self._socket = new net.Socket();
+	        self._connectionState = CONNECTION_STATES.CONNECTING;
+
+	        self._socket.connect(self._port, self._hostname);
+
+	        // register event handlers for socket
+
+	        self._socket.on("connect", function () {
+	            self._socket.setKeepAlive(true, SOCKET_KEEPALIVE_DELAY);
+	            self._socket.setNoDelay();
+	            connectSocketDeferred.resolve(self);
+	            self._writeStream = self._socket;
+	        });
+
+	        self._socket.on("error", function (err) {
+	            if (connectSocketDeferred.promise.isPending()) {
+	                connectSocketDeferred.reject(err);
+	            }
+	            self.emit("error", "Socket error: " + err);
+	            self.disconnect();
+	        });
+
+	        self._socket.on("close", function () {
+	            self._connectionState = CONNECTION_STATES.CLOSED;
+	            self.emit("close");
+	        });
+
+	        self._socket.on("data", function (incomingBuffer) {
+	            var isNewMessage = self._receivedBytes === 0,
+	                minimumSize = incomingBuffer.length + self._receivedBytes;
+
+	            self._receiveBuffer = ensureBufferSize(self._receiveBuffer, minimumSize);
+	            incomingBuffer.copy(self._receiveBuffer, self._receivedBytes);
+	            self._receivedBytes += incomingBuffer.length;
+
+	            self._processReceiveBuffer(isNewMessage);
+	        });
+
+	        self._socket.on("drain", function () {
+	            self._doPendingWrites();
+	        });
+
+	        return connectSocketDeferred.promise;
+	    };
+
+	    PhotoshopClient.prototype._writeWhenFree = function (buffer) {
+	        var self = this;
+	        self._writeQueue.push(buffer);
+	        process.nextTick(function () {
+	            self._doPendingWrites();
+	        });
+	    };
+
+	    PhotoshopClient.prototype._doPendingWrites = function () {
+	        if (this._writeStream && this._writeQueue.length > 0 && !this._writeStream.busy) {
+	            var bufferToWrite = this._writeQueue.shift();
+	            var writeStatus = this._writeStream.write(bufferToWrite);
+	            if (writeStatus && this._writeQueue.length > 0) {
+	                this._doPendingWrites();
+	            }
+	        }
+	        // Continue to try writing as long as there is something left to write
+	        if (this._writeStream && this._writeQueue.length > 0) {
+	            process.nextTick(this._doPendingWrites.bind(this));
+	        }
+	    };
+
+	    PhotoshopClient.prototype.isConnected = function () {
+	        return this._connectionState === CONNECTION_STATES.OPEN;
+	    };
+
+	    PhotoshopClient.prototype.disconnect = function (listener) {
+	        // NOTE: This method *must* do any actual cleanup of os resources
+	        // (e.g. sockets, pipes) synchronously. Listeners may be called asynchronously
+	        // after those resources actually close. In cases where disconnect is called
+	        // at process.exit, listeners may not get called.
+	        if (!listener) {
+	            listener = function listener() {};
+	        }
+
+	        if (this._socket) {
+	            var currentState = this._connectionState;
+	            switch (currentState) {
+	                case CONNECTION_STATES.NONE:
+	                    this._connectionState = CONNECTION_STATES.CLOSED;
+	                    process.nextTick(listener);
+	                    return true;
+	                case CONNECTION_STATES.CONNECTING:
+	                    this._connectionState = CONNECTION_STATES.CLOSING;
+	                    this._socket.once("close", listener);
+	                    this._socket.end();
+	                    return true;
+	                case CONNECTION_STATES.OPEN:
+	                    this._connectionState = CONNECTION_STATES.CLOSING;
+	                    this._socket.once("close", listener);
+	                    this._socket.end();
+	                    return true;
+	                case CONNECTION_STATES.CLOSING:
+	                    this._socket.once("close", listener);
+	                    return true;
+	                case CONNECTION_STATES.CLOSED:
+	                    process.nextTick(listener);
+	                    return true;
+	                case CONNECTION_STATES.DESTROYED:
+	                    process.nextTick(listener);
+	                    return true;
+	            }
+	        } else {
+	            if (this._readStream) {
+	                try {
+	                    this._readStream.close();
+	                } catch (readCloseError) {
+	                    // do nothing
+	                }
+	                this._readStream = null;
+	            }
+
+	            if (this._writeStream) {
+	                try {
+	                    this._writeStream.close();
+	                } catch (writeCloseError) {
+	                    // do nothing
+	                }
+	                this._writeStream = null;
+	            }
+
+	            this._connectionState = CONNECTION_STATES.CLOSED;
+	            process.nextTick(listener);
+	            return true;
+	        }
+	    };
+
+	    PhotoshopClient.prototype.destroy = function () {
+	        this._connectionState = CONNECTION_STATES.DESTROYED;
+	        if (this._socket) {
+	            this._socket.destroy();
+	        }
+	    };
+
+	    PhotoshopClient.prototype._sendMessage = function (payloadBuffer) {
+	        var cipheredPayloadBuffer = this._crypto ? this._crypto.cipher(payloadBuffer) : payloadBuffer;
+	        var headerBuffer = new Buffer(MESSAGE_PAYLOAD_OFFSET);
+
+	        // message length includes status and payload, but not the UInt32 specifying message length
+	        var messageLength = cipheredPayloadBuffer.length + MESSAGE_STATUS_LENGTH;
+	        headerBuffer.writeUInt32BE(messageLength, MESSAGE_LENGTH_OFFSET);
+	        headerBuffer.writeInt32BE(STATUS_NO_COMM_ERROR, MESSAGE_STATUS_OFFSET);
+
+	        this._writeWhenFree(headerBuffer);
+	        this._writeWhenFree(cipheredPayloadBuffer);
+	    };
+
+	    PhotoshopClient.prototype.sendKeepAlive = function () {
+	        var id = this._lastMessageID = (this._lastMessageID + 1) % MAX_MESSAGE_ID,
+	            payloadBuffer = new Buffer(PAYLOAD_HEADER_LENGTH);
+
+	        payloadBuffer.writeUInt32BE(PROTOCOL_VERSION, PAYLOAD_PROTOCOL_OFFSET);
+	        payloadBuffer.writeUInt32BE(id, PAYLOAD_ID_OFFSET);
+	        payloadBuffer.writeUInt32BE(MESSAGE_TYPE_KEEPALIVE, PAYLOAD_TYPE_OFFSET);
+
+	        this._sendMessage(payloadBuffer);
+
+	        return id;
+	    };
+
+	    PhotoshopClient.prototype.sendCommand = function (javascript) {
+	        var id = this._lastMessageID = (this._lastMessageID + 1) % MAX_MESSAGE_ID,
+	            codeBuffer = new Buffer(javascript, "utf8"),
+	            payloadBuffer = new Buffer(codeBuffer.length + PAYLOAD_HEADER_LENGTH);
+
+	        payloadBuffer.writeUInt32BE(PROTOCOL_VERSION, PAYLOAD_PROTOCOL_OFFSET);
+	        payloadBuffer.writeUInt32BE(id, PAYLOAD_ID_OFFSET);
+	        payloadBuffer.writeUInt32BE(MESSAGE_TYPE_JAVASCRIPT, PAYLOAD_TYPE_OFFSET);
+	        codeBuffer.copy(payloadBuffer, PAYLOAD_HEADER_LENGTH);
+
+	        this._sendMessage(payloadBuffer);
+
+	        return id;
+	    };
+
+	    PhotoshopClient.prototype._processReceiveBuffer = function (isNewMessage) {
+	        // Log when the message started to come in so we can analyze the performance
+	        if (isNewMessage && this._receivedBytes > 0) {
+	            this.messageStartTime = new Date().getTime();
+	        }
+
+	        // The header hasn't arrived yet: stop here
+	        if (this._receivedBytes < MESSAGE_PAYLOAD_OFFSET) {
+	            return;
+	        }
+
+	        // Evaluate communication status
+	        var commStatus = this._receiveBuffer.readInt32BE(MESSAGE_STATUS_OFFSET);
+	        if (commStatus !== STATUS_NO_COMM_ERROR) {
+	            console.error("Communication error: " + commStatus);
+	            this.emit("communicationsError", "Photoshop communication error: " + commStatus);
+	            this.disconnect();
+	            return;
+	        }
+
+	        // Message length includes status and payload, but not the UInt32 specifying message length
+	        var messageLength = this._receiveBuffer.readUInt32BE(MESSAGE_LENGTH_OFFSET),
+	            totalLength = messageLength + MESSAGE_STATUS_OFFSET;
+
+	        // Make sure the buffer is large enough to contain the whole message
+	        this._receiveBuffer = ensureBufferSize(this._receiveBuffer, totalLength, this._receivedBytes);
+
+	        // Unless the entire message has already been received, stop here
+	        if (this._receivedBytes < totalLength) {
+	            return;
+	        }
+
+	        // Performance evaluation
+	        var duration = new Date().getTime() - this.messageStartTime;
+	        if (duration > 10) {
+	            var size = this._receivedBytes / 1024,
+	                speed = size / (duration / 1000);
+	            this._logger.info(duration + "ms to receive " + round(size, 1) + " kB (" + round(speed, 1) + " kB/s)");
+	        }
+
+	        // Extract the message
+	        var cipheredBody = this._receiveBuffer.slice(MESSAGE_PAYLOAD_OFFSET, totalLength),
+	            remainingBytes = this._receivedBytes - totalLength,
+	            preferredBufferSize = Math.max(INITIAL_MESSAGE_BUFFER_SIZE, remainingBytes);
+
+	        // Prepare the buffer for the next message
+	        var oldBuffer = this._receiveBuffer;
+	        this._receiveBuffer = new Buffer(preferredBufferSize);
+	        if (remainingBytes > 0) {
+	            oldBuffer.copy(this._receiveBuffer, 0, totalLength, this._receivedBytes);
+	        }
+	        this._receivedBytes = remainingBytes;
+
+	        // Decrypt the message
+	        var startTime = new Date().getTime(),
+	            bodyBuffer = this._crypto ? this._crypto.decipher(cipheredBody) : cipheredBody;
+	        duration = new Date().getTime() - startTime;
+	        if (duration > 10) {
+	            this._logger.info(duration + "ms to decrypt buffer");
+	        }
+
+	        // Process message
+	        this._processMessage(bodyBuffer);
+
+	        // Receive buffer might have more than one message, so process again
+	        this._processReceiveBuffer(true);
+	    };
+
+	    PhotoshopClient.prototype._processMessage = function (bodyBuffer) {
+	        var protocolVersion = bodyBuffer.readUInt32BE(PAYLOAD_PROTOCOL_OFFSET),
+	            messageID = bodyBuffer.readUInt32BE(PAYLOAD_ID_OFFSET),
+	            messageType = bodyBuffer.readUInt32BE(PAYLOAD_TYPE_OFFSET),
+	            messageBody = bodyBuffer.slice(PAYLOAD_HEADER_LENGTH);
+
+	        var rawMessage = {
+	            protocolVersion: protocolVersion,
+	            id: messageID,
+	            type: messageType,
+	            body: messageBody
+	        };
+
+	        if (protocolVersion !== PROTOCOL_VERSION) {
+	            this.emit("communicationsError", "unknown protocol version", protocolVersion);
+	        } else if (messageType === MESSAGE_TYPE_JAVASCRIPT) {
+	            var messageBodyString = messageBody.toString("utf8");
+	            var messageBodyParts = messageBodyString.split("\r");
+	            var eventName = null;
+	            var parsedValue = null;
+
+	            if (messageBodyParts.length === 2) {
+	                eventName = messageBodyParts[0];
+	            }
+
+	            parsedValue = messageBodyParts[messageBodyParts.length - 1];
+
+	            // Most commands pass JSON back. However, some pass strings that result from
+	            // toStrings of un-JSON-ifiable data (e.g. "[ActionDescriptor]"). Still others
+	            // pass actual strings (that are not JSON) that we want to use (e.g. requests
+	            // for the Photoshop path). So, we try to parse as JSON, and if we fail, we just
+	            // use the string as the parsedValue. For some known strings, we don't try,
+	            // in order to avoid uninformative error messages for the console and the logs.
+	            //
+	            // TODO: In the future, it might make more sense to have a different slot in
+	            // the message that gives parsed data (if available) and unparsed string (always)
+	            if (KNOWN_LITERAL_STRING_MESSAGES.indexOf(parsedValue) === -1) {
+	                try {
+	                    parsedValue = JSON.parse(parsedValue);
+	                } catch (jsonParseException) {
+	                    // do nothing; this is not unexpected
+	                }
+	            }
+
+	            if (eventName) {
+	                this.emit("event", messageID, eventName, parsedValue, rawMessage);
+	            } else {
+	                this.emit("message", messageID, parsedValue, rawMessage);
+	            }
+	        } else if (messageType === MESSAGE_TYPE_PIXMAP) {
+	            this.emit("pixmap", messageID, messageBody, rawMessage);
+	        } else if (messageType === MESSAGE_TYPE_ICC_PROFILE) {
+	            this.emit("iccProfile", messageID, messageBody, rawMessage);
+	        } else if (messageType === MESSAGE_TYPE_ERROR) {
+	            this.emit("error", { id: messageID, body: messageBody.toString("utf8") });
+	        } else {
+	            this.emit("communicationsError", "unknown message type", messageType);
+	        }
+	    };
+
+	    // Factory Functions
+	    // -----------------    
+
+	    function createClient(options, connectListener, logger) {
+	        return new PhotoshopClient(options, connectListener, logger);
+	    }
+
+	    // Public Interface
+	    // =================================
+
+	    exports.PhotoshopClient = PhotoshopClient;
+	    exports.createClient = createClient;
+	})();
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	module.exports = require("util");
+
+/***/ },
+/* 4 */
+/***/ function(module, exports) {
+
+	module.exports = require("events");
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	module.exports = require("net");
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {"use strict";
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	// vim:ts=4:sts=4:sw=4:
+	/*!
 	 *
 	 * Copyright 2009-2012 Kris Kowal under the terms of the MIT
 	 * license found at http://github.com/kriskowal/q/raw/master/LICENSE
@@ -36,7 +811,2100 @@ module.exports=function(e){function t(r){if(n[r])return n[r].exports;var o=n[r]=
 	 * limitations under the License.
 	 *
 	 */
-!function(c){if("function"==typeof bootstrap)bootstrap("promise",c);else if("object"===i(t)&&"object"===i(e))e.exports=c();else{r=c,o="function"==typeof r?r.call(t,n,t,e):r,!(void 0!==o&&(e.exports=o))}}(function(){function e(e){return function(){return $.apply(e,arguments)}}function t(e){return e===Object(e)}function n(e){return"[object StopIteration]"===ne(e)||e instanceof q}function r(e,t){if(Q&&t.stack&&"object"===("undefined"==typeof e?"undefined":i(e))&&null!==e&&e.stack&&e.stack.indexOf(re)===-1){for(var n=[],r=t;r;r=r.source)r.stack&&n.unshift(r.stack);n.unshift(e.stack);var c=n.join("\n"+re+"\n");e.stack=o(c)}}function o(e){for(var t=e.split("\n"),n=[],r=0;r<t.length;++r){var o=t[r];s(o)||c(o)||!o||n.push(o)}return n.join("\n")}function c(e){return e.indexOf("(module.js:")!==-1||e.indexOf("(node.js:")!==-1}function u(e){var t=/at .+ \((.+):(\d+):(?:\d+)\)$/.exec(e);if(t)return[t[1],Number(t[2])];var n=/at ([^ ]+):(\d+):(?:\d+)$/.exec(e);if(n)return[n[1],Number(n[2])];var r=/.*@(.+):(\d+)$/.exec(e);return r?[r[1],Number(r[2])]:void 0}function s(e){var t=u(e);if(!t)return!1;var n=t[0],r=t[1];return n===G&&r>=K&&r<=se}function f(){if(Q)try{throw new Error}catch(r){var e=r.stack.split("\n"),t=e[0].indexOf("@")>0?e[1]:e[2],n=u(t);if(!n)return;return G=n[0],n[1]}}function p(e,t,n){return function(){return"undefined"!=typeof console&&"function"==typeof console.warn&&console.warn(t+" is deprecated, use "+n+" instead.",new Error("").stack),e.apply(e,arguments)}}function a(e){return e instanceof y?e:w(e)?T(e):E(e)}function l(){function e(e){t=e,i.source=e,J(n,function(t,n){a.nextTick(function(){e.promiseDispatch.apply(e,n)})},void 0),n=void 0,r=void 0}var t,n=[],r=[],o=Z(l.prototype),i=Z(y.prototype);if(i.promiseDispatch=function(e,o,i){var c=H(arguments);n?(n.push(c),"when"===o&&i[1]&&r.push(i[1])):a.nextTick(function(){t.promiseDispatch.apply(t,c)})},i.valueOf=function(){if(n)return i;var e=m(t);return _(e)&&(t=e),e},i.inspect=function(){return t?t.inspect():{state:"pending"}},a.longStackSupport&&Q)try{throw new Error}catch(e){i.stack=e.stack.substring(e.stack.indexOf("\n")+1)}return o.promise=i,o.resolve=function(n){t||e(a(n))},o.fulfill=function(n){t||e(E(n))},o.reject=function(n){t||e(x(n))},o.notify=function(e){t||J(r,function(t,n){a.nextTick(function(){n(e)})},void 0)},o}function d(e){if("function"!=typeof e)throw new TypeError("resolver must be a function.");var t=l();try{e(t.resolve,t.reject,t.notify)}catch(e){t.reject(e)}return t.promise}function h(e){return d(function(t,n){for(var r=0,o=e.length;r<o;r++)a(e[r]).then(t,n)})}function y(e,t,n){void 0===t&&(t=function(e){return x(new Error("Promise does not support operation: "+e))}),void 0===n&&(n=function(){return{state:"unknown"}});var r=Z(y.prototype);if(r.promiseDispatch=function(n,o,i){var c;try{c=e[o]?e[o].apply(r,i):t.call(r,o,i)}catch(e){c=x(e)}n&&n(c)},r.inspect=n,n){var o=n();"rejected"===o.state&&(r.exception=o.reason),r.valueOf=function(){var e=n();return"pending"===e.state||"rejected"===e.state?r:e.value}}return r}function v(e,t,n,r){return a(e).then(t,n,r)}function m(e){if(_(e)){var t=e.inspect();if("fulfilled"===t.state)return t.value}return e}function _(e){return e instanceof y}function w(e){return t(e)&&"function"==typeof e.then}function k(e){return _(e)&&"pending"===e.inspect().state}function g(e){return!_(e)||"fulfilled"===e.inspect().state}function S(e){return _(e)&&"rejected"===e.inspect().state}function b(){oe.length=0,ie.length=0,ue||(ue=!0)}function B(e,t){ue&&("object"===("undefined"==typeof process?"undefined":i(process))&&"function"==typeof process.emit&&a.nextTick.runAfter(function(){z(ie,e)!==-1&&(process.emit("unhandledRejection",t,e),ce.push(e))}),ie.push(e),t&&"undefined"!=typeof t.stack?oe.push(t.stack):oe.push("(no stack) "+t))}function j(e){if(ue){var t=z(ie,e);t!==-1&&("object"===("undefined"==typeof process?"undefined":i(process))&&"function"==typeof process.emit&&a.nextTick.runAfter(function(){var n=z(ce,e);n!==-1&&(process.emit("rejectionHandled",oe[t],e),ce.splice(n,1))}),ie.splice(t,1),oe.splice(t,1))}}function x(e){var t=y({when:function(t){return t&&j(this),t?t(e):this}},function(){return this},function(){return{state:"rejected",reason:e}});return B(t,e),t}function E(e){return y({when:function(){return e},get:function(t){return e[t]},set:function(t,n){e[t]=n},delete:function(t){delete e[t]},post:function(t,n){return null===t||void 0===t?e.apply(void 0,n):e[t].apply(e,n)},apply:function(t,n){return e.apply(t,n)},keys:function(){return te(e)}},void 0,function(){return{state:"fulfilled",value:e}})}function T(e){var t=l();return a.nextTick(function(){try{e.then(t.resolve,t.reject,t.notify)}catch(e){t.reject(e)}}),t.promise}function O(e){return y({isDef:function(){}},function(t,n){return I(e,t,n)},function(){return a(e).inspect()})}function P(e,t,n){return a(e).spread(t,n)}function C(e){return function(){function t(e,t){var c;if("undefined"==typeof StopIteration){try{c=r[e](t)}catch(e){return x(e)}return c.done?a(c.value):v(c.value,o,i)}try{c=r[e](t)}catch(e){return n(e)?a(e.value):x(e)}return v(c,o,i)}var r=e.apply(this,arguments),o=t.bind(t,"next"),i=t.bind(t,"throw");return o()}}function N(e){a.done(a.async(e)())}function D(e){throw new q(e)}function R(e){return function(){return P([this,F(arguments)],function(t,n){return e.apply(t,n)})}}function I(e,t,n){return a(e).dispatch(t,n)}function F(e){return v(e,function(e){var t=0,n=l();return J(e,function(r,o,i){var c;_(o)&&"fulfilled"===(c=o.inspect()).state?e[i]=c.value:(++t,v(o,function(r){e[i]=r,0===--t&&n.resolve(e)},n.reject,function(e){n.notify({index:i,value:e})}))},void 0),0===t&&n.resolve(e),n.promise})}function M(e){if(0===e.length)return a.resolve();var t=a.defer(),n=0;return J(e,function(r,o,i){function c(e){t.resolve(e)}function u(){n--,0===n&&t.reject(new Error("Can't get fulfillment value from any promise, all promises were rejected."))}function s(e){t.notify({index:i,value:e})}var f=e[i];n++,v(f,c,u,s)},void 0),t.promise}function U(e){return v(e,function(e){return e=X(e,a),v(F(X(e,function(e){return v(e,Y,Y)})),function(){return e})})}function A(e){return a(e).allSettled()}function L(e,t){return a(e).then(void 0,void 0,t)}function W(e,t){return a(e).nodeify(t)}var Q=!1;try{throw new Error}catch(e){Q=!!e.stack}var G,q,K=f(),Y=function(){},V=function(){function e(){for(var e,r;n.next;)n=n.next,e=n.task,n.task=void 0,r=n.domain,r&&(n.domain=void 0,r.enter()),t(e,r);for(;s.length;)e=s.pop(),t(e);o=!1}function t(t,n){try{t()}catch(t){if(u)throw n&&n.exit(),setTimeout(e,0),n&&n.enter(),t;setTimeout(function(){throw t},0)}n&&n.exit()}var n={task:void 0,next:null},r=n,o=!1,c=void 0,u=!1,s=[];if(V=function(e){r=r.next={task:e,domain:u&&process.domain,next:null},o||(o=!0,c())},"object"===("undefined"==typeof process?"undefined":i(process))&&"[object process]"===process.toString()&&process.nextTick)u=!0,c=function(){process.nextTick(e)};else if("function"==typeof setImmediate)c="undefined"!=typeof window?setImmediate.bind(window,e):function(){setImmediate(e)};else if("undefined"!=typeof MessageChannel){var f=new MessageChannel;f.port1.onmessage=function(){c=p,f.port1.onmessage=e,e()};var p=function(){f.port2.postMessage(0)};c=function(){setTimeout(e,0),p()}}else c=function(){setTimeout(e,0)};return V.runAfter=function(e){s.push(e),o||(o=!0,c())},V}(),$=Function.call,H=e(Array.prototype.slice),J=e(Array.prototype.reduce||function(e,t){var n=0,r=this.length;if(1===arguments.length)for(;;){if(n in this){t=this[n++];break}if(++n>=r)throw new TypeError}for(;n<r;n++)n in this&&(t=e(t,this[n],n));return t}),z=e(Array.prototype.indexOf||function(e){for(var t=0;t<this.length;t++)if(this[t]===e)return t;return-1}),X=e(Array.prototype.map||function(e,t){var n=this,r=[];return J(n,function(o,i,c){r.push(e.call(t,i,c,n))},void 0),r}),Z=Object.create||function(e){function t(){}return t.prototype=e,new t},ee=e(Object.prototype.hasOwnProperty),te=Object.keys||function(e){var t=[];for(var n in e)ee(e,n)&&t.push(n);return t},ne=e(Object.prototype.toString);q="undefined"!=typeof ReturnValue?ReturnValue:function(e){this.value=e};var re="From previous event:";a.resolve=a,a.nextTick=V,a.longStackSupport=!1,"object"===("undefined"==typeof process?"undefined":i(process))&&process&&process.env&&process.env.Q_DEBUG&&(a.longStackSupport=!0),a.defer=l,l.prototype.makeNodeResolver=function(){var e=this;return function(t,n){t?e.reject(t):arguments.length>2?e.resolve(H(arguments,1)):e.resolve(n)}},a.Promise=d,a.promise=d,d.race=h,d.all=F,d.reject=x,d.resolve=a,a.passByCopy=function(e){return e},y.prototype.passByCopy=function(){return this},a.join=function(e,t){return a(e).join(t)},y.prototype.join=function(e){return a([this,e]).spread(function(e,t){if(e===t)return e;throw new Error("Can't join: not the same: "+e+" "+t)})},a.race=h,y.prototype.race=function(){return this.then(a.race)},a.makePromise=y,y.prototype.toString=function(){return"[object Promise]"},y.prototype.then=function(e,t,n){function o(t){try{return"function"==typeof e?e(t):t}catch(e){return x(e)}}function i(e){if("function"==typeof t){r(e,u);try{return t(e)}catch(e){return x(e)}}return x(e)}function c(e){return"function"==typeof n?n(e):e}var u=this,s=l(),f=!1;return a.nextTick(function(){u.promiseDispatch(function(e){f||(f=!0,s.resolve(o(e)))},"when",[function(e){f||(f=!0,s.resolve(i(e)))}])}),u.promiseDispatch(void 0,"when",[void 0,function(e){var t,n=!1;try{t=c(e)}catch(e){if(n=!0,!a.onerror)throw e;a.onerror(e)}n||s.notify(t)}]),s.promise},a.tap=function(e,t){return a(e).tap(t)},y.prototype.tap=function(e){return e=a(e),this.then(function(t){return e.fcall(t).thenResolve(t)})},a.when=v,y.prototype.thenResolve=function(e){return this.then(function(){return e})},a.thenResolve=function(e,t){return a(e).thenResolve(t)},y.prototype.thenReject=function(e){return this.then(function(){throw e})},a.thenReject=function(e,t){return a(e).thenReject(t)},a.nearer=m,a.isPromise=_,a.isPromiseAlike=w,a.isPending=k,y.prototype.isPending=function(){return"pending"===this.inspect().state},a.isFulfilled=g,y.prototype.isFulfilled=function(){return"fulfilled"===this.inspect().state},a.isRejected=S,y.prototype.isRejected=function(){return"rejected"===this.inspect().state};var oe=[],ie=[],ce=[],ue=!0;a.resetUnhandledRejections=b,a.getUnhandledReasons=function(){return oe.slice()},a.stopUnhandledRejectionTracking=function(){b(),ue=!1},b(),a.reject=x,a.fulfill=E,a.master=O,a.spread=P,y.prototype.spread=function(e,t){return this.all().then(function(t){return e.apply(void 0,t)},t)},a.async=C,a.spawn=N,a.return=D,a.promised=R,a.dispatch=I,y.prototype.dispatch=function(e,t){var n=this,r=l();return a.nextTick(function(){n.promiseDispatch(r.resolve,e,t)}),r.promise},a.get=function(e,t){return a(e).dispatch("get",[t])},y.prototype.get=function(e){return this.dispatch("get",[e])},a.set=function(e,t,n){return a(e).dispatch("set",[t,n])},y.prototype.set=function(e,t){return this.dispatch("set",[e,t])},a.del=a.delete=function(e,t){return a(e).dispatch("delete",[t])},y.prototype.del=y.prototype.delete=function(e){return this.dispatch("delete",[e])},a.mapply=a.post=function(e,t,n){return a(e).dispatch("post",[t,n])},y.prototype.mapply=y.prototype.post=function(e,t){return this.dispatch("post",[e,t])},a.send=a.mcall=a.invoke=function(e,t){return a(e).dispatch("post",[t,H(arguments,2)])},y.prototype.send=y.prototype.mcall=y.prototype.invoke=function(e){return this.dispatch("post",[e,H(arguments,1)])},a.fapply=function(e,t){return a(e).dispatch("apply",[void 0,t])},y.prototype.fapply=function(e){return this.dispatch("apply",[void 0,e])},a.try=a.fcall=function(e){return a(e).dispatch("apply",[void 0,H(arguments,1)])},y.prototype.fcall=function(){return this.dispatch("apply",[void 0,H(arguments)])},a.fbind=function(e){var t=a(e),n=H(arguments,1);return function(){return t.dispatch("apply",[this,n.concat(H(arguments))])}},y.prototype.fbind=function(){var e=this,t=H(arguments);return function(){return e.dispatch("apply",[this,t.concat(H(arguments))])}},a.keys=function(e){return a(e).dispatch("keys",[])},y.prototype.keys=function(){return this.dispatch("keys",[])},a.all=F,y.prototype.all=function(){return F(this)},a.any=M,y.prototype.any=function(){return M(this)},a.allResolved=p(U,"allResolved","allSettled"),y.prototype.allResolved=function(){return U(this)},a.allSettled=A,y.prototype.allSettled=function(){return this.then(function(e){return F(X(e,function(e){function t(){return e.inspect()}return e=a(e),e.then(t,t)}))})},a.fail=a.catch=function(e,t){return a(e).then(void 0,t)},y.prototype.fail=y.prototype.catch=function(e){return this.then(void 0,e)},a.progress=L,y.prototype.progress=function(e){return this.then(void 0,void 0,e)},a.fin=a.finally=function(e,t){return a(e).finally(t)},y.prototype.fin=y.prototype.finally=function(e){return e=a(e),this.then(function(t){return e.fcall().then(function(){return t})},function(t){return e.fcall().then(function(){throw t})})},a.done=function(e,t,n,r){return a(e).done(t,n,r)},y.prototype.done=function(e,t,n){var o=function(e){a.nextTick(function(){if(r(e,c),!a.onerror)throw e;a.onerror(e)})},c=e||t||n?this.then(e,t,n):this;"object"===("undefined"==typeof process?"undefined":i(process))&&process&&process.domain&&(o=process.domain.bind(o)),c.then(void 0,o)},a.timeout=function(e,t,n){return a(e).timeout(t,n)},y.prototype.timeout=function(e,t){var n=l(),r=setTimeout(function(){t&&"string"!=typeof t||(t=new Error(t||"Timed out after "+e+" ms"),t.code="ETIMEDOUT"),n.reject(t)},e);return this.then(function(e){clearTimeout(r),n.resolve(e)},function(e){clearTimeout(r),n.reject(e)},n.notify),n.promise},a.delay=function(e,t){return void 0===t&&(t=e,e=void 0),a(e).delay(t)},y.prototype.delay=function(e){return this.then(function(t){var n=l();return setTimeout(function(){n.resolve(t)},e),n.promise})},a.nfapply=function(e,t){return a(e).nfapply(t)},y.prototype.nfapply=function(e){var t=l(),n=H(e);return n.push(t.makeNodeResolver()),this.fapply(n).fail(t.reject),t.promise},a.nfcall=function(e){var t=H(arguments,1);return a(e).nfapply(t)},y.prototype.nfcall=function(){var e=H(arguments),t=l();return e.push(t.makeNodeResolver()),this.fapply(e).fail(t.reject),t.promise},a.nfbind=a.denodeify=function(e){var t=H(arguments,1);return function(){var n=t.concat(H(arguments)),r=l();return n.push(r.makeNodeResolver()),a(e).fapply(n).fail(r.reject),r.promise}},y.prototype.nfbind=y.prototype.denodeify=function(){var e=H(arguments);return e.unshift(this),a.denodeify.apply(void 0,e)},a.nbind=function(e,t){var n=H(arguments,2);return function(){function r(){return e.apply(t,arguments)}var o=n.concat(H(arguments)),i=l();return o.push(i.makeNodeResolver()),a(r).fapply(o).fail(i.reject),i.promise}},y.prototype.nbind=function(){var e=H(arguments,0);return e.unshift(this),a.nbind.apply(void 0,e)},a.nmapply=a.npost=function(e,t,n){return a(e).npost(t,n)},y.prototype.nmapply=y.prototype.npost=function(e,t){var n=H(t||[]),r=l();return n.push(r.makeNodeResolver()),this.dispatch("post",[e,n]).fail(r.reject),r.promise},a.nsend=a.nmcall=a.ninvoke=function(e,t){var n=H(arguments,2),r=l();return n.push(r.makeNodeResolver()),a(e).dispatch("post",[t,n]).fail(r.reject),r.promise},y.prototype.nsend=y.prototype.nmcall=y.prototype.ninvoke=function(e){var t=H(arguments,1),n=l();return t.push(n.makeNodeResolver()),this.dispatch("post",[e,t]).fail(n.reject),n.promise},a.nodeify=W,y.prototype.nodeify=function(e){return e?void this.then(function(t){a.nextTick(function(){e(null,t)})},function(t){a.nextTick(function(){e(t)})}):this},a.noConflict=function(){throw new Error("Q.noConflict only works when Q is used as a global")};var se=f();return a})}).call(t,n(2)(e))},function(e,t){"use strict";e.exports=function(e){return e.webpackPolyfill||(e.deprecate=function(){},e.paths=[],e.children=[],e.webpackPolyfill=1),e}},function(e,t,n){/*
+
+	(function (definition) {
+	    "use strict";
+
+	    // This file will function properly as a <script> tag, or a module
+	    // using CommonJS and NodeJS or RequireJS module formats.  In
+	    // Common/Node/RequireJS, the module exports the Q API and when
+	    // executed as a simple <script>, it creates a Q global instead.
+
+	    // Montage Require
+
+	    if (typeof bootstrap === "function") {
+	        bootstrap("promise", definition);
+
+	        // CommonJS
+	    } else if (( false ? "undefined" : _typeof(exports)) === "object" && ( false ? "undefined" : _typeof(module)) === "object") {
+	        module.exports = definition();
+
+	        // RequireJS
+	    } else if (true) {
+	        !(__WEBPACK_AMD_DEFINE_FACTORY__ = (definition), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+	        // SES (Secure EcmaScript)
+	    } else if (typeof ses !== "undefined") {
+	        if (!ses.ok()) {
+	            return;
+	        } else {
+	            ses.makeQ = definition;
+	        }
+
+	        // <script>
+	    } else if (typeof window !== "undefined" || typeof self !== "undefined") {
+	        // Prefer window over self for add-on scripts. Use self for
+	        // non-windowed contexts.
+	        var global = typeof window !== "undefined" ? window : self;
+
+	        // Get the `window` object, save the previous Q global
+	        // and initialize Q as a global.
+	        var previousQ = global.Q;
+	        global.Q = definition();
+
+	        // Add a noConflict function so Q can be removed from the
+	        // global namespace.
+	        global.Q.noConflict = function () {
+	            global.Q = previousQ;
+	            return this;
+	        };
+	    } else {
+	        throw new Error("This environment was not anticipated by Q. Please file a bug.");
+	    }
+	})(function () {
+	    "use strict";
+
+	    var hasStacks = false;
+	    try {
+	        throw new Error();
+	    } catch (e) {
+	        hasStacks = !!e.stack;
+	    }
+
+	    // All code after this point will be filtered from stack traces reported
+	    // by Q.
+	    var qStartingLine = captureLine();
+	    var qFileName;
+
+	    // shims
+
+	    // used for fallback in "allResolved"
+	    var noop = function noop() {};
+
+	    // Use the fastest possible means to execute a task in a future turn
+	    // of the event loop.
+	    var nextTick = function () {
+	        // linked list of tasks (single, with head node)
+	        var head = { task: void 0, next: null };
+	        var tail = head;
+	        var flushing = false;
+	        var requestTick = void 0;
+	        var isNodeJS = false;
+	        // queue for late tasks, used by unhandled rejection tracking
+	        var laterQueue = [];
+
+	        function flush() {
+	            /* jshint loopfunc: true */
+	            var task, domain;
+
+	            while (head.next) {
+	                head = head.next;
+	                task = head.task;
+	                head.task = void 0;
+	                domain = head.domain;
+
+	                if (domain) {
+	                    head.domain = void 0;
+	                    domain.enter();
+	                }
+	                runSingle(task, domain);
+	            }
+	            while (laterQueue.length) {
+	                task = laterQueue.pop();
+	                runSingle(task);
+	            }
+	            flushing = false;
+	        }
+	        // runs a single function in the async queue
+	        function runSingle(task, domain) {
+	            try {
+	                task();
+	            } catch (e) {
+	                if (isNodeJS) {
+	                    // In node, uncaught exceptions are considered fatal errors.
+	                    // Re-throw them synchronously to interrupt flushing!
+
+	                    // Ensure continuation if the uncaught exception is suppressed
+	                    // listening "uncaughtException" events (as domains does).
+	                    // Continue in next event to avoid tick recursion.
+	                    if (domain) {
+	                        domain.exit();
+	                    }
+	                    setTimeout(flush, 0);
+	                    if (domain) {
+	                        domain.enter();
+	                    }
+
+	                    throw e;
+	                } else {
+	                    // In browsers, uncaught exceptions are not fatal.
+	                    // Re-throw them asynchronously to avoid slow-downs.
+	                    setTimeout(function () {
+	                        throw e;
+	                    }, 0);
+	                }
+	            }
+
+	            if (domain) {
+	                domain.exit();
+	            }
+	        }
+
+	        nextTick = function nextTick(task) {
+	            tail = tail.next = {
+	                task: task,
+	                domain: isNodeJS && process.domain,
+	                next: null
+	            };
+
+	            if (!flushing) {
+	                flushing = true;
+	                requestTick();
+	            }
+	        };
+
+	        if ((typeof process === "undefined" ? "undefined" : _typeof(process)) === "object" && process.toString() === "[object process]" && process.nextTick) {
+	            // Ensure Q is in a real Node environment, with a `process.nextTick`.
+	            // To see through fake Node environments:
+	            // * Mocha test runner - exposes a `process` global without a `nextTick`
+	            // * Browserify - exposes a `process.nexTick` function that uses
+	            //   `setTimeout`. In this case `setImmediate` is preferred because
+	            //    it is faster. Browserify's `process.toString()` yields
+	            //   "[object Object]", while in a real Node environment
+	            //   `process.nextTick()` yields "[object process]".
+	            isNodeJS = true;
+
+	            requestTick = function requestTick() {
+	                process.nextTick(flush);
+	            };
+	        } else if (typeof setImmediate === "function") {
+	            // In IE10, Node.js 0.9+, or https://github.com/NobleJS/setImmediate
+	            if (typeof window !== "undefined") {
+	                requestTick = setImmediate.bind(window, flush);
+	            } else {
+	                requestTick = function requestTick() {
+	                    setImmediate(flush);
+	                };
+	            }
+	        } else if (typeof MessageChannel !== "undefined") {
+	            // modern browsers
+	            // http://www.nonblocking.io/2011/06/windownexttick.html
+	            var channel = new MessageChannel();
+	            // At least Safari Version 6.0.5 (8536.30.1) intermittently cannot create
+	            // working message ports the first time a page loads.
+	            channel.port1.onmessage = function () {
+	                requestTick = requestPortTick;
+	                channel.port1.onmessage = flush;
+	                flush();
+	            };
+	            var requestPortTick = function requestPortTick() {
+	                // Opera requires us to provide a message payload, regardless of
+	                // whether we use it.
+	                channel.port2.postMessage(0);
+	            };
+	            requestTick = function requestTick() {
+	                setTimeout(flush, 0);
+	                requestPortTick();
+	            };
+	        } else {
+	            // old browsers
+	            requestTick = function requestTick() {
+	                setTimeout(flush, 0);
+	            };
+	        }
+	        // runs a task after all other tasks have been run
+	        // this is useful for unhandled rejection tracking that needs to happen
+	        // after all `then`d tasks have been run.
+	        nextTick.runAfter = function (task) {
+	            laterQueue.push(task);
+	            if (!flushing) {
+	                flushing = true;
+	                requestTick();
+	            }
+	        };
+	        return nextTick;
+	    }();
+
+	    // Attempt to make generics safe in the face of downstream
+	    // modifications.
+	    // There is no situation where this is necessary.
+	    // If you need a security guarantee, these primordials need to be
+	    // deeply frozen anyway, and if you don’t need a security guarantee,
+	    // this is just plain paranoid.
+	    // However, this **might** have the nice side-effect of reducing the size of
+	    // the minified code by reducing x.call() to merely x()
+	    // See Mark Miller’s explanation of what this does.
+	    // http://wiki.ecmascript.org/doku.php?id=conventions:safe_meta_programming
+	    var call = Function.call;
+	    function uncurryThis(f) {
+	        return function () {
+	            return call.apply(f, arguments);
+	        };
+	    }
+	    // This is equivalent, but slower:
+	    // uncurryThis = Function_bind.bind(Function_bind.call);
+	    // http://jsperf.com/uncurrythis
+
+	    var array_slice = uncurryThis(Array.prototype.slice);
+
+	    var array_reduce = uncurryThis(Array.prototype.reduce || function (callback, basis) {
+	        var index = 0,
+	            length = this.length;
+	        // concerning the initial value, if one is not provided
+	        if (arguments.length === 1) {
+	            // seek to the first value in the array, accounting
+	            // for the possibility that is is a sparse array
+	            do {
+	                if (index in this) {
+	                    basis = this[index++];
+	                    break;
+	                }
+	                if (++index >= length) {
+	                    throw new TypeError();
+	                }
+	            } while (1);
+	        }
+	        // reduce
+	        for (; index < length; index++) {
+	            // account for the possibility that the array is sparse
+	            if (index in this) {
+	                basis = callback(basis, this[index], index);
+	            }
+	        }
+	        return basis;
+	    });
+
+	    var array_indexOf = uncurryThis(Array.prototype.indexOf || function (value) {
+	        // not a very good shim, but good enough for our one use of it
+	        for (var i = 0; i < this.length; i++) {
+	            if (this[i] === value) {
+	                return i;
+	            }
+	        }
+	        return -1;
+	    });
+
+	    var array_map = uncurryThis(Array.prototype.map || function (callback, thisp) {
+	        var self = this;
+	        var collect = [];
+	        array_reduce(self, function (undefined, value, index) {
+	            collect.push(callback.call(thisp, value, index, self));
+	        }, void 0);
+	        return collect;
+	    });
+
+	    var object_create = Object.create || function (prototype) {
+	        function Type() {}
+	        Type.prototype = prototype;
+	        return new Type();
+	    };
+
+	    var object_hasOwnProperty = uncurryThis(Object.prototype.hasOwnProperty);
+
+	    var object_keys = Object.keys || function (object) {
+	        var keys = [];
+	        for (var key in object) {
+	            if (object_hasOwnProperty(object, key)) {
+	                keys.push(key);
+	            }
+	        }
+	        return keys;
+	    };
+
+	    var object_toString = uncurryThis(Object.prototype.toString);
+
+	    function isObject(value) {
+	        return value === Object(value);
+	    }
+
+	    // generator related shims
+
+	    // FIXME: Remove this function once ES6 generators are in SpiderMonkey.
+	    function isStopIteration(exception) {
+	        return object_toString(exception) === "[object StopIteration]" || exception instanceof QReturnValue;
+	    }
+
+	    // FIXME: Remove this helper and Q.return once ES6 generators are in
+	    // SpiderMonkey.
+	    var QReturnValue;
+	    if (typeof ReturnValue !== "undefined") {
+	        QReturnValue = ReturnValue;
+	    } else {
+	        QReturnValue = function QReturnValue(value) {
+	            this.value = value;
+	        };
+	    }
+
+	    // long stack traces
+
+	    var STACK_JUMP_SEPARATOR = "From previous event:";
+
+	    function makeStackTraceLong(error, promise) {
+	        // If possible, transform the error stack trace by removing Node and Q
+	        // cruft, then concatenating with the stack trace of `promise`. See #57.
+	        if (hasStacks && promise.stack && (typeof error === "undefined" ? "undefined" : _typeof(error)) === "object" && error !== null && error.stack && error.stack.indexOf(STACK_JUMP_SEPARATOR) === -1) {
+	            var stacks = [];
+	            for (var p = promise; !!p; p = p.source) {
+	                if (p.stack) {
+	                    stacks.unshift(p.stack);
+	                }
+	            }
+	            stacks.unshift(error.stack);
+
+	            var concatedStacks = stacks.join("\n" + STACK_JUMP_SEPARATOR + "\n");
+	            error.stack = filterStackString(concatedStacks);
+	        }
+	    }
+
+	    function filterStackString(stackString) {
+	        var lines = stackString.split("\n");
+	        var desiredLines = [];
+	        for (var i = 0; i < lines.length; ++i) {
+	            var line = lines[i];
+
+	            if (!isInternalFrame(line) && !isNodeFrame(line) && line) {
+	                desiredLines.push(line);
+	            }
+	        }
+	        return desiredLines.join("\n");
+	    }
+
+	    function isNodeFrame(stackLine) {
+	        return stackLine.indexOf("(module.js:") !== -1 || stackLine.indexOf("(node.js:") !== -1;
+	    }
+
+	    function getFileNameAndLineNumber(stackLine) {
+	        // Named functions: "at functionName (filename:lineNumber:columnNumber)"
+	        // In IE10 function name can have spaces ("Anonymous function") O_o
+	        var attempt1 = /at .+ \((.+):(\d+):(?:\d+)\)$/.exec(stackLine);
+	        if (attempt1) {
+	            return [attempt1[1], Number(attempt1[2])];
+	        }
+
+	        // Anonymous functions: "at filename:lineNumber:columnNumber"
+	        var attempt2 = /at ([^ ]+):(\d+):(?:\d+)$/.exec(stackLine);
+	        if (attempt2) {
+	            return [attempt2[1], Number(attempt2[2])];
+	        }
+
+	        // Firefox style: "function@filename:lineNumber or @filename:lineNumber"
+	        var attempt3 = /.*@(.+):(\d+)$/.exec(stackLine);
+	        if (attempt3) {
+	            return [attempt3[1], Number(attempt3[2])];
+	        }
+	    }
+
+	    function isInternalFrame(stackLine) {
+	        var fileNameAndLineNumber = getFileNameAndLineNumber(stackLine);
+
+	        if (!fileNameAndLineNumber) {
+	            return false;
+	        }
+
+	        var fileName = fileNameAndLineNumber[0];
+	        var lineNumber = fileNameAndLineNumber[1];
+
+	        return fileName === qFileName && lineNumber >= qStartingLine && lineNumber <= qEndingLine;
+	    }
+
+	    // discover own file name and line number range for filtering stack
+	    // traces
+	    function captureLine() {
+	        if (!hasStacks) {
+	            return;
+	        }
+
+	        try {
+	            throw new Error();
+	        } catch (e) {
+	            var lines = e.stack.split("\n");
+	            var firstLine = lines[0].indexOf("@") > 0 ? lines[1] : lines[2];
+	            var fileNameAndLineNumber = getFileNameAndLineNumber(firstLine);
+	            if (!fileNameAndLineNumber) {
+	                return;
+	            }
+
+	            qFileName = fileNameAndLineNumber[0];
+	            return fileNameAndLineNumber[1];
+	        }
+	    }
+
+	    function deprecate(callback, name, alternative) {
+	        return function () {
+	            if (typeof console !== "undefined" && typeof console.warn === "function") {
+	                console.warn(name + " is deprecated, use " + alternative + " instead.", new Error("").stack);
+	            }
+	            return callback.apply(callback, arguments);
+	        };
+	    }
+
+	    // end of shims
+	    // beginning of real work
+
+	    /**
+	     * Constructs a promise for an immediate reference, passes promises through, or
+	     * coerces promises from different systems.
+	     * @param value immediate reference or promise
+	     */
+	    function Q(value) {
+	        // If the object is already a Promise, return it directly.  This enables
+	        // the resolve function to both be used to created references from objects,
+	        // but to tolerably coerce non-promises to promises.
+	        if (value instanceof Promise) {
+	            return value;
+	        }
+
+	        // assimilate thenables
+	        if (isPromiseAlike(value)) {
+	            return coerce(value);
+	        } else {
+	            return fulfill(value);
+	        }
+	    }
+	    Q.resolve = Q;
+
+	    /**
+	     * Performs a task in a future turn of the event loop.
+	     * @param {Function} task
+	     */
+	    Q.nextTick = nextTick;
+
+	    /**
+	     * Controls whether or not long stack traces will be on
+	     */
+	    Q.longStackSupport = false;
+
+	    // enable long stacks if Q_DEBUG is set
+	    if ((typeof process === "undefined" ? "undefined" : _typeof(process)) === "object" && process && process.env && process.env.Q_DEBUG) {
+	        Q.longStackSupport = true;
+	    }
+
+	    /**
+	     * Constructs a {promise, resolve, reject} object.
+	     *
+	     * `resolve` is a callback to invoke with a more resolved value for the
+	     * promise. To fulfill the promise, invoke `resolve` with any value that is
+	     * not a thenable. To reject the promise, invoke `resolve` with a rejected
+	     * thenable, or invoke `reject` with the reason directly. To resolve the
+	     * promise to another thenable, thus putting it in the same state, invoke
+	     * `resolve` with that other thenable.
+	     */
+	    Q.defer = defer;
+	    function defer() {
+	        // if "messages" is an "Array", that indicates that the promise has not yet
+	        // been resolved.  If it is "undefined", it has been resolved.  Each
+	        // element of the messages array is itself an array of complete arguments to
+	        // forward to the resolved promise.  We coerce the resolution value to a
+	        // promise using the `resolve` function because it handles both fully
+	        // non-thenable values and other thenables gracefully.
+	        var messages = [],
+	            progressListeners = [],
+	            resolvedPromise;
+
+	        var deferred = object_create(defer.prototype);
+	        var promise = object_create(Promise.prototype);
+
+	        promise.promiseDispatch = function (resolve, op, operands) {
+	            var args = array_slice(arguments);
+	            if (messages) {
+	                messages.push(args);
+	                if (op === "when" && operands[1]) {
+	                    // progress operand
+	                    progressListeners.push(operands[1]);
+	                }
+	            } else {
+	                Q.nextTick(function () {
+	                    resolvedPromise.promiseDispatch.apply(resolvedPromise, args);
+	                });
+	            }
+	        };
+
+	        // XXX deprecated
+	        promise.valueOf = function () {
+	            if (messages) {
+	                return promise;
+	            }
+	            var nearerValue = nearer(resolvedPromise);
+	            if (isPromise(nearerValue)) {
+	                resolvedPromise = nearerValue; // shorten chain
+	            }
+	            return nearerValue;
+	        };
+
+	        promise.inspect = function () {
+	            if (!resolvedPromise) {
+	                return { state: "pending" };
+	            }
+	            return resolvedPromise.inspect();
+	        };
+
+	        if (Q.longStackSupport && hasStacks) {
+	            try {
+	                throw new Error();
+	            } catch (e) {
+	                // NOTE: don't try to use `Error.captureStackTrace` or transfer the
+	                // accessor around; that causes memory leaks as per GH-111. Just
+	                // reify the stack trace as a string ASAP.
+	                //
+	                // At the same time, cut off the first line; it's always just
+	                // "[object Promise]\n", as per the `toString`.
+	                promise.stack = e.stack.substring(e.stack.indexOf("\n") + 1);
+	            }
+	        }
+
+	        // NOTE: we do the checks for `resolvedPromise` in each method, instead of
+	        // consolidating them into `become`, since otherwise we'd create new
+	        // promises with the lines `become(whatever(value))`. See e.g. GH-252.
+
+	        function become(newPromise) {
+	            resolvedPromise = newPromise;
+	            promise.source = newPromise;
+
+	            array_reduce(messages, function (undefined, message) {
+	                Q.nextTick(function () {
+	                    newPromise.promiseDispatch.apply(newPromise, message);
+	                });
+	            }, void 0);
+
+	            messages = void 0;
+	            progressListeners = void 0;
+	        }
+
+	        deferred.promise = promise;
+	        deferred.resolve = function (value) {
+	            if (resolvedPromise) {
+	                return;
+	            }
+
+	            become(Q(value));
+	        };
+
+	        deferred.fulfill = function (value) {
+	            if (resolvedPromise) {
+	                return;
+	            }
+
+	            become(fulfill(value));
+	        };
+	        deferred.reject = function (reason) {
+	            if (resolvedPromise) {
+	                return;
+	            }
+
+	            become(reject(reason));
+	        };
+	        deferred.notify = function (progress) {
+	            if (resolvedPromise) {
+	                return;
+	            }
+
+	            array_reduce(progressListeners, function (undefined, progressListener) {
+	                Q.nextTick(function () {
+	                    progressListener(progress);
+	                });
+	            }, void 0);
+	        };
+
+	        return deferred;
+	    }
+
+	    /**
+	     * Creates a Node-style callback that will resolve or reject the deferred
+	     * promise.
+	     * @returns a nodeback
+	     */
+	    defer.prototype.makeNodeResolver = function () {
+	        var self = this;
+	        return function (error, value) {
+	            if (error) {
+	                self.reject(error);
+	            } else if (arguments.length > 2) {
+	                self.resolve(array_slice(arguments, 1));
+	            } else {
+	                self.resolve(value);
+	            }
+	        };
+	    };
+
+	    /**
+	     * @param resolver {Function} a function that returns nothing and accepts
+	     * the resolve, reject, and notify functions for a deferred.
+	     * @returns a promise that may be resolved with the given resolve and reject
+	     * functions, or rejected by a thrown exception in resolver
+	     */
+	    Q.Promise = promise; // ES6
+	    Q.promise = promise;
+	    function promise(resolver) {
+	        if (typeof resolver !== "function") {
+	            throw new TypeError("resolver must be a function.");
+	        }
+	        var deferred = defer();
+	        try {
+	            resolver(deferred.resolve, deferred.reject, deferred.notify);
+	        } catch (reason) {
+	            deferred.reject(reason);
+	        }
+	        return deferred.promise;
+	    }
+
+	    promise.race = race; // ES6
+	    promise.all = all; // ES6
+	    promise.reject = reject; // ES6
+	    promise.resolve = Q; // ES6
+
+	    // XXX experimental.  This method is a way to denote that a local value is
+	    // serializable and should be immediately dispatched to a remote upon request,
+	    // instead of passing a reference.
+	    Q.passByCopy = function (object) {
+	        //freeze(object);
+	        //passByCopies.set(object, true);
+	        return object;
+	    };
+
+	    Promise.prototype.passByCopy = function () {
+	        //freeze(object);
+	        //passByCopies.set(object, true);
+	        return this;
+	    };
+
+	    /**
+	     * If two promises eventually fulfill to the same value, promises that value,
+	     * but otherwise rejects.
+	     * @param x {Any*}
+	     * @param y {Any*}
+	     * @returns {Any*} a promise for x and y if they are the same, but a rejection
+	     * otherwise.
+	     *
+	     */
+	    Q.join = function (x, y) {
+	        return Q(x).join(y);
+	    };
+
+	    Promise.prototype.join = function (that) {
+	        return Q([this, that]).spread(function (x, y) {
+	            if (x === y) {
+	                // TODO: "===" should be Object.is or equiv
+	                return x;
+	            } else {
+	                throw new Error("Can't join: not the same: " + x + " " + y);
+	            }
+	        });
+	    };
+
+	    /**
+	     * Returns a promise for the first of an array of promises to become settled.
+	     * @param answers {Array[Any*]} promises to race
+	     * @returns {Any*} the first promise to be settled
+	     */
+	    Q.race = race;
+	    function race(answerPs) {
+	        return promise(function (resolve, reject) {
+	            // Switch to this once we can assume at least ES5
+	            // answerPs.forEach(function (answerP) {
+	            //     Q(answerP).then(resolve, reject);
+	            // });
+	            // Use this in the meantime
+	            for (var i = 0, len = answerPs.length; i < len; i++) {
+	                Q(answerPs[i]).then(resolve, reject);
+	            }
+	        });
+	    }
+
+	    Promise.prototype.race = function () {
+	        return this.then(Q.race);
+	    };
+
+	    /**
+	     * Constructs a Promise with a promise descriptor object and optional fallback
+	     * function.  The descriptor contains methods like when(rejected), get(name),
+	     * set(name, value), post(name, args), and delete(name), which all
+	     * return either a value, a promise for a value, or a rejection.  The fallback
+	     * accepts the operation name, a resolver, and any further arguments that would
+	     * have been forwarded to the appropriate method above had a method been
+	     * provided with the proper name.  The API makes no guarantees about the nature
+	     * of the returned object, apart from that it is usable whereever promises are
+	     * bought and sold.
+	     */
+	    Q.makePromise = Promise;
+	    function Promise(descriptor, fallback, inspect) {
+	        if (fallback === void 0) {
+	            fallback = function fallback(op) {
+	                return reject(new Error("Promise does not support operation: " + op));
+	            };
+	        }
+	        if (inspect === void 0) {
+	            inspect = function inspect() {
+	                return { state: "unknown" };
+	            };
+	        }
+
+	        var promise = object_create(Promise.prototype);
+
+	        promise.promiseDispatch = function (resolve, op, args) {
+	            var result;
+	            try {
+	                if (descriptor[op]) {
+	                    result = descriptor[op].apply(promise, args);
+	                } else {
+	                    result = fallback.call(promise, op, args);
+	                }
+	            } catch (exception) {
+	                result = reject(exception);
+	            }
+	            if (resolve) {
+	                resolve(result);
+	            }
+	        };
+
+	        promise.inspect = inspect;
+
+	        // XXX deprecated `valueOf` and `exception` support
+	        if (inspect) {
+	            var inspected = inspect();
+	            if (inspected.state === "rejected") {
+	                promise.exception = inspected.reason;
+	            }
+
+	            promise.valueOf = function () {
+	                var inspected = inspect();
+	                if (inspected.state === "pending" || inspected.state === "rejected") {
+	                    return promise;
+	                }
+	                return inspected.value;
+	            };
+	        }
+
+	        return promise;
+	    }
+
+	    Promise.prototype.toString = function () {
+	        return "[object Promise]";
+	    };
+
+	    Promise.prototype.then = function (fulfilled, rejected, progressed) {
+	        var self = this;
+	        var deferred = defer();
+	        var done = false; // ensure the untrusted promise makes at most a
+	        // single call to one of the callbacks
+
+	        function _fulfilled(value) {
+	            try {
+	                return typeof fulfilled === "function" ? fulfilled(value) : value;
+	            } catch (exception) {
+	                return reject(exception);
+	            }
+	        }
+
+	        function _rejected(exception) {
+	            if (typeof rejected === "function") {
+	                makeStackTraceLong(exception, self);
+	                try {
+	                    return rejected(exception);
+	                } catch (newException) {
+	                    return reject(newException);
+	                }
+	            }
+	            return reject(exception);
+	        }
+
+	        function _progressed(value) {
+	            return typeof progressed === "function" ? progressed(value) : value;
+	        }
+
+	        Q.nextTick(function () {
+	            self.promiseDispatch(function (value) {
+	                if (done) {
+	                    return;
+	                }
+	                done = true;
+
+	                deferred.resolve(_fulfilled(value));
+	            }, "when", [function (exception) {
+	                if (done) {
+	                    return;
+	                }
+	                done = true;
+
+	                deferred.resolve(_rejected(exception));
+	            }]);
+	        });
+
+	        // Progress propagator need to be attached in the current tick.
+	        self.promiseDispatch(void 0, "when", [void 0, function (value) {
+	            var newValue;
+	            var threw = false;
+	            try {
+	                newValue = _progressed(value);
+	            } catch (e) {
+	                threw = true;
+	                if (Q.onerror) {
+	                    Q.onerror(e);
+	                } else {
+	                    throw e;
+	                }
+	            }
+
+	            if (!threw) {
+	                deferred.notify(newValue);
+	            }
+	        }]);
+
+	        return deferred.promise;
+	    };
+
+	    Q.tap = function (promise, callback) {
+	        return Q(promise).tap(callback);
+	    };
+
+	    /**
+	     * Works almost like "finally", but not called for rejections.
+	     * Original resolution value is passed through callback unaffected.
+	     * Callback may return a promise that will be awaited for.
+	     * @param {Function} callback
+	     * @returns {Q.Promise}
+	     * @example
+	     * doSomething()
+	     *   .then(...)
+	     *   .tap(console.log)
+	     *   .then(...);
+	     */
+	    Promise.prototype.tap = function (callback) {
+	        callback = Q(callback);
+
+	        return this.then(function (value) {
+	            return callback.fcall(value).thenResolve(value);
+	        });
+	    };
+
+	    /**
+	     * Registers an observer on a promise.
+	     *
+	     * Guarantees:
+	     *
+	     * 1. that fulfilled and rejected will be called only once.
+	     * 2. that either the fulfilled callback or the rejected callback will be
+	     *    called, but not both.
+	     * 3. that fulfilled and rejected will not be called in this turn.
+	     *
+	     * @param value      promise or immediate reference to observe
+	     * @param fulfilled  function to be called with the fulfilled value
+	     * @param rejected   function to be called with the rejection exception
+	     * @param progressed function to be called on any progress notifications
+	     * @return promise for the return value from the invoked callback
+	     */
+	    Q.when = when;
+	    function when(value, fulfilled, rejected, progressed) {
+	        return Q(value).then(fulfilled, rejected, progressed);
+	    }
+
+	    Promise.prototype.thenResolve = function (value) {
+	        return this.then(function () {
+	            return value;
+	        });
+	    };
+
+	    Q.thenResolve = function (promise, value) {
+	        return Q(promise).thenResolve(value);
+	    };
+
+	    Promise.prototype.thenReject = function (reason) {
+	        return this.then(function () {
+	            throw reason;
+	        });
+	    };
+
+	    Q.thenReject = function (promise, reason) {
+	        return Q(promise).thenReject(reason);
+	    };
+
+	    /**
+	     * If an object is not a promise, it is as "near" as possible.
+	     * If a promise is rejected, it is as "near" as possible too.
+	     * If it’s a fulfilled promise, the fulfillment value is nearer.
+	     * If it’s a deferred promise and the deferred has been resolved, the
+	     * resolution is "nearer".
+	     * @param object
+	     * @returns most resolved (nearest) form of the object
+	     */
+
+	    // XXX should we re-do this?
+	    Q.nearer = nearer;
+	    function nearer(value) {
+	        if (isPromise(value)) {
+	            var inspected = value.inspect();
+	            if (inspected.state === "fulfilled") {
+	                return inspected.value;
+	            }
+	        }
+	        return value;
+	    }
+
+	    /**
+	     * @returns whether the given object is a promise.
+	     * Otherwise it is a fulfilled value.
+	     */
+	    Q.isPromise = isPromise;
+	    function isPromise(object) {
+	        return object instanceof Promise;
+	    }
+
+	    Q.isPromiseAlike = isPromiseAlike;
+	    function isPromiseAlike(object) {
+	        return isObject(object) && typeof object.then === "function";
+	    }
+
+	    /**
+	     * @returns whether the given object is a pending promise, meaning not
+	     * fulfilled or rejected.
+	     */
+	    Q.isPending = isPending;
+	    function isPending(object) {
+	        return isPromise(object) && object.inspect().state === "pending";
+	    }
+
+	    Promise.prototype.isPending = function () {
+	        return this.inspect().state === "pending";
+	    };
+
+	    /**
+	     * @returns whether the given object is a value or fulfilled
+	     * promise.
+	     */
+	    Q.isFulfilled = isFulfilled;
+	    function isFulfilled(object) {
+	        return !isPromise(object) || object.inspect().state === "fulfilled";
+	    }
+
+	    Promise.prototype.isFulfilled = function () {
+	        return this.inspect().state === "fulfilled";
+	    };
+
+	    /**
+	     * @returns whether the given object is a rejected promise.
+	     */
+	    Q.isRejected = isRejected;
+	    function isRejected(object) {
+	        return isPromise(object) && object.inspect().state === "rejected";
+	    }
+
+	    Promise.prototype.isRejected = function () {
+	        return this.inspect().state === "rejected";
+	    };
+
+	    //// BEGIN UNHANDLED REJECTION TRACKING
+
+	    // This promise library consumes exceptions thrown in handlers so they can be
+	    // handled by a subsequent promise.  The exceptions get added to this array when
+	    // they are created, and removed when they are handled.  Note that in ES6 or
+	    // shimmed environments, this would naturally be a `Set`.
+	    var unhandledReasons = [];
+	    var unhandledRejections = [];
+	    var reportedUnhandledRejections = [];
+	    var trackUnhandledRejections = true;
+
+	    function resetUnhandledRejections() {
+	        unhandledReasons.length = 0;
+	        unhandledRejections.length = 0;
+
+	        if (!trackUnhandledRejections) {
+	            trackUnhandledRejections = true;
+	        }
+	    }
+
+	    function trackRejection(promise, reason) {
+	        if (!trackUnhandledRejections) {
+	            return;
+	        }
+	        if ((typeof process === "undefined" ? "undefined" : _typeof(process)) === "object" && typeof process.emit === "function") {
+	            Q.nextTick.runAfter(function () {
+	                if (array_indexOf(unhandledRejections, promise) !== -1) {
+	                    process.emit("unhandledRejection", reason, promise);
+	                    reportedUnhandledRejections.push(promise);
+	                }
+	            });
+	        }
+
+	        unhandledRejections.push(promise);
+	        if (reason && typeof reason.stack !== "undefined") {
+	            unhandledReasons.push(reason.stack);
+	        } else {
+	            unhandledReasons.push("(no stack) " + reason);
+	        }
+	    }
+
+	    function untrackRejection(promise) {
+	        if (!trackUnhandledRejections) {
+	            return;
+	        }
+
+	        var at = array_indexOf(unhandledRejections, promise);
+	        if (at !== -1) {
+	            if ((typeof process === "undefined" ? "undefined" : _typeof(process)) === "object" && typeof process.emit === "function") {
+	                Q.nextTick.runAfter(function () {
+	                    var atReport = array_indexOf(reportedUnhandledRejections, promise);
+	                    if (atReport !== -1) {
+	                        process.emit("rejectionHandled", unhandledReasons[at], promise);
+	                        reportedUnhandledRejections.splice(atReport, 1);
+	                    }
+	                });
+	            }
+	            unhandledRejections.splice(at, 1);
+	            unhandledReasons.splice(at, 1);
+	        }
+	    }
+
+	    Q.resetUnhandledRejections = resetUnhandledRejections;
+
+	    Q.getUnhandledReasons = function () {
+	        // Make a copy so that consumers can't interfere with our internal state.
+	        return unhandledReasons.slice();
+	    };
+
+	    Q.stopUnhandledRejectionTracking = function () {
+	        resetUnhandledRejections();
+	        trackUnhandledRejections = false;
+	    };
+
+	    resetUnhandledRejections();
+
+	    //// END UNHANDLED REJECTION TRACKING
+
+	    /**
+	     * Constructs a rejected promise.
+	     * @param reason value describing the failure
+	     */
+	    Q.reject = reject;
+	    function reject(reason) {
+	        var rejection = Promise({
+	            "when": function when(rejected) {
+	                // note that the error has been handled
+	                if (rejected) {
+	                    untrackRejection(this);
+	                }
+	                return rejected ? rejected(reason) : this;
+	            }
+	        }, function fallback() {
+	            return this;
+	        }, function inspect() {
+	            return { state: "rejected", reason: reason };
+	        });
+
+	        // Note that the reason has not been handled.
+	        trackRejection(rejection, reason);
+
+	        return rejection;
+	    }
+
+	    /**
+	     * Constructs a fulfilled promise for an immediate reference.
+	     * @param value immediate reference
+	     */
+	    Q.fulfill = fulfill;
+	    function fulfill(value) {
+	        return Promise({
+	            "when": function when() {
+	                return value;
+	            },
+	            "get": function get(name) {
+	                return value[name];
+	            },
+	            "set": function set(name, rhs) {
+	                value[name] = rhs;
+	            },
+	            "delete": function _delete(name) {
+	                delete value[name];
+	            },
+	            "post": function post(name, args) {
+	                // Mark Miller proposes that post with no name should apply a
+	                // promised function.
+	                if (name === null || name === void 0) {
+	                    return value.apply(void 0, args);
+	                } else {
+	                    return value[name].apply(value, args);
+	                }
+	            },
+	            "apply": function apply(thisp, args) {
+	                return value.apply(thisp, args);
+	            },
+	            "keys": function keys() {
+	                return object_keys(value);
+	            }
+	        }, void 0, function inspect() {
+	            return { state: "fulfilled", value: value };
+	        });
+	    }
+
+	    /**
+	     * Converts thenables to Q promises.
+	     * @param promise thenable promise
+	     * @returns a Q promise
+	     */
+	    function coerce(promise) {
+	        var deferred = defer();
+	        Q.nextTick(function () {
+	            try {
+	                promise.then(deferred.resolve, deferred.reject, deferred.notify);
+	            } catch (exception) {
+	                deferred.reject(exception);
+	            }
+	        });
+	        return deferred.promise;
+	    }
+
+	    /**
+	     * Annotates an object such that it will never be
+	     * transferred away from this process over any promise
+	     * communication channel.
+	     * @param object
+	     * @returns promise a wrapping of that object that
+	     * additionally responds to the "isDef" message
+	     * without a rejection.
+	     */
+	    Q.master = master;
+	    function master(object) {
+	        return Promise({
+	            "isDef": function isDef() {}
+	        }, function fallback(op, args) {
+	            return dispatch(object, op, args);
+	        }, function () {
+	            return Q(object).inspect();
+	        });
+	    }
+
+	    /**
+	     * Spreads the values of a promised array of arguments into the
+	     * fulfillment callback.
+	     * @param fulfilled callback that receives variadic arguments from the
+	     * promised array
+	     * @param rejected callback that receives the exception if the promise
+	     * is rejected.
+	     * @returns a promise for the return value or thrown exception of
+	     * either callback.
+	     */
+	    Q.spread = spread;
+	    function spread(value, fulfilled, rejected) {
+	        return Q(value).spread(fulfilled, rejected);
+	    }
+
+	    Promise.prototype.spread = function (fulfilled, rejected) {
+	        return this.all().then(function (array) {
+	            return fulfilled.apply(void 0, array);
+	        }, rejected);
+	    };
+
+	    /**
+	     * The async function is a decorator for generator functions, turning
+	     * them into asynchronous generators.  Although generators are only part
+	     * of the newest ECMAScript 6 drafts, this code does not cause syntax
+	     * errors in older engines.  This code should continue to work and will
+	     * in fact improve over time as the language improves.
+	     *
+	     * ES6 generators are currently part of V8 version 3.19 with the
+	     * --harmony-generators runtime flag enabled.  SpiderMonkey has had them
+	     * for longer, but under an older Python-inspired form.  This function
+	     * works on both kinds of generators.
+	     *
+	     * Decorates a generator function such that:
+	     *  - it may yield promises
+	     *  - execution will continue when that promise is fulfilled
+	     *  - the value of the yield expression will be the fulfilled value
+	     *  - it returns a promise for the return value (when the generator
+	     *    stops iterating)
+	     *  - the decorated function returns a promise for the return value
+	     *    of the generator or the first rejected promise among those
+	     *    yielded.
+	     *  - if an error is thrown in the generator, it propagates through
+	     *    every following yield until it is caught, or until it escapes
+	     *    the generator function altogether, and is translated into a
+	     *    rejection for the promise returned by the decorated generator.
+	     */
+	    Q.async = async;
+	    function async(makeGenerator) {
+	        return function () {
+	            // when verb is "send", arg is a value
+	            // when verb is "throw", arg is an exception
+	            function continuer(verb, arg) {
+	                var result;
+
+	                // Until V8 3.19 / Chromium 29 is released, SpiderMonkey is the only
+	                // engine that has a deployed base of browsers that support generators.
+	                // However, SM's generators use the Python-inspired semantics of
+	                // outdated ES6 drafts.  We would like to support ES6, but we'd also
+	                // like to make it possible to use generators in deployed browsers, so
+	                // we also support Python-style generators.  At some point we can remove
+	                // this block.
+
+	                if (typeof StopIteration === "undefined") {
+	                    // ES6 Generators
+	                    try {
+	                        result = generator[verb](arg);
+	                    } catch (exception) {
+	                        return reject(exception);
+	                    }
+	                    if (result.done) {
+	                        return Q(result.value);
+	                    } else {
+	                        return when(result.value, callback, errback);
+	                    }
+	                } else {
+	                    // SpiderMonkey Generators
+	                    // FIXME: Remove this case when SM does ES6 generators.
+	                    try {
+	                        result = generator[verb](arg);
+	                    } catch (exception) {
+	                        if (isStopIteration(exception)) {
+	                            return Q(exception.value);
+	                        } else {
+	                            return reject(exception);
+	                        }
+	                    }
+	                    return when(result, callback, errback);
+	                }
+	            }
+	            var generator = makeGenerator.apply(this, arguments);
+	            var callback = continuer.bind(continuer, "next");
+	            var errback = continuer.bind(continuer, "throw");
+	            return callback();
+	        };
+	    }
+
+	    /**
+	     * The spawn function is a small wrapper around async that immediately
+	     * calls the generator and also ends the promise chain, so that any
+	     * unhandled errors are thrown instead of forwarded to the error
+	     * handler. This is useful because it's extremely common to run
+	     * generators at the top-level to work with libraries.
+	     */
+	    Q.spawn = spawn;
+	    function spawn(makeGenerator) {
+	        Q.done(Q.async(makeGenerator)());
+	    }
+
+	    // FIXME: Remove this interface once ES6 generators are in SpiderMonkey.
+	    /**
+	     * Throws a ReturnValue exception to stop an asynchronous generator.
+	     *
+	     * This interface is a stop-gap measure to support generator return
+	     * values in older Firefox/SpiderMonkey.  In browsers that support ES6
+	     * generators like Chromium 29, just use "return" in your generator
+	     * functions.
+	     *
+	     * @param value the return value for the surrounding generator
+	     * @throws ReturnValue exception with the value.
+	     * @example
+	     * // ES6 style
+	     * Q.async(function* () {
+	     *      var foo = yield getFooPromise();
+	     *      var bar = yield getBarPromise();
+	     *      return foo + bar;
+	     * })
+	     * // Older SpiderMonkey style
+	     * Q.async(function () {
+	     *      var foo = yield getFooPromise();
+	     *      var bar = yield getBarPromise();
+	     *      Q.return(foo + bar);
+	     * })
+	     */
+	    Q["return"] = _return;
+	    function _return(value) {
+	        throw new QReturnValue(value);
+	    }
+
+	    /**
+	     * The promised function decorator ensures that any promise arguments
+	     * are settled and passed as values (`this` is also settled and passed
+	     * as a value).  It will also ensure that the result of a function is
+	     * always a promise.
+	     *
+	     * @example
+	     * var add = Q.promised(function (a, b) {
+	     *     return a + b;
+	     * });
+	     * add(Q(a), Q(B));
+	     *
+	     * @param {function} callback The function to decorate
+	     * @returns {function} a function that has been decorated.
+	     */
+	    Q.promised = promised;
+	    function promised(callback) {
+	        return function () {
+	            return spread([this, all(arguments)], function (self, args) {
+	                return callback.apply(self, args);
+	            });
+	        };
+	    }
+
+	    /**
+	     * sends a message to a value in a future turn
+	     * @param object* the recipient
+	     * @param op the name of the message operation, e.g., "when",
+	     * @param args further arguments to be forwarded to the operation
+	     * @returns result {Promise} a promise for the result of the operation
+	     */
+	    Q.dispatch = dispatch;
+	    function dispatch(object, op, args) {
+	        return Q(object).dispatch(op, args);
+	    }
+
+	    Promise.prototype.dispatch = function (op, args) {
+	        var self = this;
+	        var deferred = defer();
+	        Q.nextTick(function () {
+	            self.promiseDispatch(deferred.resolve, op, args);
+	        });
+	        return deferred.promise;
+	    };
+
+	    /**
+	     * Gets the value of a property in a future turn.
+	     * @param object    promise or immediate reference for target object
+	     * @param name      name of property to get
+	     * @return promise for the property value
+	     */
+	    Q.get = function (object, key) {
+	        return Q(object).dispatch("get", [key]);
+	    };
+
+	    Promise.prototype.get = function (key) {
+	        return this.dispatch("get", [key]);
+	    };
+
+	    /**
+	     * Sets the value of a property in a future turn.
+	     * @param object    promise or immediate reference for object object
+	     * @param name      name of property to set
+	     * @param value     new value of property
+	     * @return promise for the return value
+	     */
+	    Q.set = function (object, key, value) {
+	        return Q(object).dispatch("set", [key, value]);
+	    };
+
+	    Promise.prototype.set = function (key, value) {
+	        return this.dispatch("set", [key, value]);
+	    };
+
+	    /**
+	     * Deletes a property in a future turn.
+	     * @param object    promise or immediate reference for target object
+	     * @param name      name of property to delete
+	     * @return promise for the return value
+	     */
+	    Q.del = // XXX legacy
+	    Q["delete"] = function (object, key) {
+	        return Q(object).dispatch("delete", [key]);
+	    };
+
+	    Promise.prototype.del = // XXX legacy
+	    Promise.prototype["delete"] = function (key) {
+	        return this.dispatch("delete", [key]);
+	    };
+
+	    /**
+	     * Invokes a method in a future turn.
+	     * @param object    promise or immediate reference for target object
+	     * @param name      name of method to invoke
+	     * @param value     a value to post, typically an array of
+	     *                  invocation arguments for promises that
+	     *                  are ultimately backed with `resolve` values,
+	     *                  as opposed to those backed with URLs
+	     *                  wherein the posted value can be any
+	     *                  JSON serializable object.
+	     * @return promise for the return value
+	     */
+	    // bound locally because it is used by other methods
+	    Q.mapply = // XXX As proposed by "Redsandro"
+	    Q.post = function (object, name, args) {
+	        return Q(object).dispatch("post", [name, args]);
+	    };
+
+	    Promise.prototype.mapply = // XXX As proposed by "Redsandro"
+	    Promise.prototype.post = function (name, args) {
+	        return this.dispatch("post", [name, args]);
+	    };
+
+	    /**
+	     * Invokes a method in a future turn.
+	     * @param object    promise or immediate reference for target object
+	     * @param name      name of method to invoke
+	     * @param ...args   array of invocation arguments
+	     * @return promise for the return value
+	     */
+	    Q.send = // XXX Mark Miller's proposed parlance
+	    Q.mcall = // XXX As proposed by "Redsandro"
+	    Q.invoke = function (object, name /*...args*/) {
+	        return Q(object).dispatch("post", [name, array_slice(arguments, 2)]);
+	    };
+
+	    Promise.prototype.send = // XXX Mark Miller's proposed parlance
+	    Promise.prototype.mcall = // XXX As proposed by "Redsandro"
+	    Promise.prototype.invoke = function (name /*...args*/) {
+	        return this.dispatch("post", [name, array_slice(arguments, 1)]);
+	    };
+
+	    /**
+	     * Applies the promised function in a future turn.
+	     * @param object    promise or immediate reference for target function
+	     * @param args      array of application arguments
+	     */
+	    Q.fapply = function (object, args) {
+	        return Q(object).dispatch("apply", [void 0, args]);
+	    };
+
+	    Promise.prototype.fapply = function (args) {
+	        return this.dispatch("apply", [void 0, args]);
+	    };
+
+	    /**
+	     * Calls the promised function in a future turn.
+	     * @param object    promise or immediate reference for target function
+	     * @param ...args   array of application arguments
+	     */
+	    Q["try"] = Q.fcall = function (object /* ...args*/) {
+	        return Q(object).dispatch("apply", [void 0, array_slice(arguments, 1)]);
+	    };
+
+	    Promise.prototype.fcall = function () /*...args*/{
+	        return this.dispatch("apply", [void 0, array_slice(arguments)]);
+	    };
+
+	    /**
+	     * Binds the promised function, transforming return values into a fulfilled
+	     * promise and thrown errors into a rejected one.
+	     * @param object    promise or immediate reference for target function
+	     * @param ...args   array of application arguments
+	     */
+	    Q.fbind = function (object /*...args*/) {
+	        var promise = Q(object);
+	        var args = array_slice(arguments, 1);
+	        return function fbound() {
+	            return promise.dispatch("apply", [this, args.concat(array_slice(arguments))]);
+	        };
+	    };
+	    Promise.prototype.fbind = function () /*...args*/{
+	        var promise = this;
+	        var args = array_slice(arguments);
+	        return function fbound() {
+	            return promise.dispatch("apply", [this, args.concat(array_slice(arguments))]);
+	        };
+	    };
+
+	    /**
+	     * Requests the names of the owned properties of a promised
+	     * object in a future turn.
+	     * @param object    promise or immediate reference for target object
+	     * @return promise for the keys of the eventually settled object
+	     */
+	    Q.keys = function (object) {
+	        return Q(object).dispatch("keys", []);
+	    };
+
+	    Promise.prototype.keys = function () {
+	        return this.dispatch("keys", []);
+	    };
+
+	    /**
+	     * Turns an array of promises into a promise for an array.  If any of
+	     * the promises gets rejected, the whole array is rejected immediately.
+	     * @param {Array*} an array (or promise for an array) of values (or
+	     * promises for values)
+	     * @returns a promise for an array of the corresponding values
+	     */
+	    // By Mark Miller
+	    // http://wiki.ecmascript.org/doku.php?id=strawman:concurrency&rev=1308776521#allfulfilled
+	    Q.all = all;
+	    function all(promises) {
+	        return when(promises, function (promises) {
+	            var pendingCount = 0;
+	            var deferred = defer();
+	            array_reduce(promises, function (undefined, promise, index) {
+	                var snapshot;
+	                if (isPromise(promise) && (snapshot = promise.inspect()).state === "fulfilled") {
+	                    promises[index] = snapshot.value;
+	                } else {
+	                    ++pendingCount;
+	                    when(promise, function (value) {
+	                        promises[index] = value;
+	                        if (--pendingCount === 0) {
+	                            deferred.resolve(promises);
+	                        }
+	                    }, deferred.reject, function (progress) {
+	                        deferred.notify({ index: index, value: progress });
+	                    });
+	                }
+	            }, void 0);
+	            if (pendingCount === 0) {
+	                deferred.resolve(promises);
+	            }
+	            return deferred.promise;
+	        });
+	    }
+
+	    Promise.prototype.all = function () {
+	        return all(this);
+	    };
+
+	    /**
+	     * Returns the first resolved promise of an array. Prior rejected promises are
+	     * ignored.  Rejects only if all promises are rejected.
+	     * @param {Array*} an array containing values or promises for values
+	     * @returns a promise fulfilled with the value of the first resolved promise,
+	     * or a rejected promise if all promises are rejected.
+	     */
+	    Q.any = any;
+
+	    function any(promises) {
+	        if (promises.length === 0) {
+	            return Q.resolve();
+	        }
+
+	        var deferred = Q.defer();
+	        var pendingCount = 0;
+	        array_reduce(promises, function (prev, current, index) {
+	            var promise = promises[index];
+
+	            pendingCount++;
+
+	            when(promise, onFulfilled, onRejected, onProgress);
+	            function onFulfilled(result) {
+	                deferred.resolve(result);
+	            }
+	            function onRejected() {
+	                pendingCount--;
+	                if (pendingCount === 0) {
+	                    deferred.reject(new Error("Can't get fulfillment value from any promise, all " + "promises were rejected."));
+	                }
+	            }
+	            function onProgress(progress) {
+	                deferred.notify({
+	                    index: index,
+	                    value: progress
+	                });
+	            }
+	        }, undefined);
+
+	        return deferred.promise;
+	    }
+
+	    Promise.prototype.any = function () {
+	        return any(this);
+	    };
+
+	    /**
+	     * Waits for all promises to be settled, either fulfilled or
+	     * rejected.  This is distinct from `all` since that would stop
+	     * waiting at the first rejection.  The promise returned by
+	     * `allResolved` will never be rejected.
+	     * @param promises a promise for an array (or an array) of promises
+	     * (or values)
+	     * @return a promise for an array of promises
+	     */
+	    Q.allResolved = deprecate(allResolved, "allResolved", "allSettled");
+	    function allResolved(promises) {
+	        return when(promises, function (promises) {
+	            promises = array_map(promises, Q);
+	            return when(all(array_map(promises, function (promise) {
+	                return when(promise, noop, noop);
+	            })), function () {
+	                return promises;
+	            });
+	        });
+	    }
+
+	    Promise.prototype.allResolved = function () {
+	        return allResolved(this);
+	    };
+
+	    /**
+	     * @see Promise#allSettled
+	     */
+	    Q.allSettled = allSettled;
+	    function allSettled(promises) {
+	        return Q(promises).allSettled();
+	    }
+
+	    /**
+	     * Turns an array of promises into a promise for an array of their states (as
+	     * returned by `inspect`) when they have all settled.
+	     * @param {Array[Any*]} values an array (or promise for an array) of values (or
+	     * promises for values)
+	     * @returns {Array[State]} an array of states for the respective values.
+	     */
+	    Promise.prototype.allSettled = function () {
+	        return this.then(function (promises) {
+	            return all(array_map(promises, function (promise) {
+	                promise = Q(promise);
+	                function regardless() {
+	                    return promise.inspect();
+	                }
+	                return promise.then(regardless, regardless);
+	            }));
+	        });
+	    };
+
+	    /**
+	     * Captures the failure of a promise, giving an oportunity to recover
+	     * with a callback.  If the given promise is fulfilled, the returned
+	     * promise is fulfilled.
+	     * @param {Any*} promise for something
+	     * @param {Function} callback to fulfill the returned promise if the
+	     * given promise is rejected
+	     * @returns a promise for the return value of the callback
+	     */
+	    Q.fail = // XXX legacy
+	    Q["catch"] = function (object, rejected) {
+	        return Q(object).then(void 0, rejected);
+	    };
+
+	    Promise.prototype.fail = // XXX legacy
+	    Promise.prototype["catch"] = function (rejected) {
+	        return this.then(void 0, rejected);
+	    };
+
+	    /**
+	     * Attaches a listener that can respond to progress notifications from a
+	     * promise's originating deferred. This listener receives the exact arguments
+	     * passed to ``deferred.notify``.
+	     * @param {Any*} promise for something
+	     * @param {Function} callback to receive any progress notifications
+	     * @returns the given promise, unchanged
+	     */
+	    Q.progress = progress;
+	    function progress(object, progressed) {
+	        return Q(object).then(void 0, void 0, progressed);
+	    }
+
+	    Promise.prototype.progress = function (progressed) {
+	        return this.then(void 0, void 0, progressed);
+	    };
+
+	    /**
+	     * Provides an opportunity to observe the settling of a promise,
+	     * regardless of whether the promise is fulfilled or rejected.  Forwards
+	     * the resolution to the returned promise when the callback is done.
+	     * The callback can return a promise to defer completion.
+	     * @param {Any*} promise
+	     * @param {Function} callback to observe the resolution of the given
+	     * promise, takes no arguments.
+	     * @returns a promise for the resolution of the given promise when
+	     * ``fin`` is done.
+	     */
+	    Q.fin = // XXX legacy
+	    Q["finally"] = function (object, callback) {
+	        return Q(object)["finally"](callback);
+	    };
+
+	    Promise.prototype.fin = // XXX legacy
+	    Promise.prototype["finally"] = function (callback) {
+	        callback = Q(callback);
+	        return this.then(function (value) {
+	            return callback.fcall().then(function () {
+	                return value;
+	            });
+	        }, function (reason) {
+	            // TODO attempt to recycle the rejection with "this".
+	            return callback.fcall().then(function () {
+	                throw reason;
+	            });
+	        });
+	    };
+
+	    /**
+	     * Terminates a chain of promises, forcing rejections to be
+	     * thrown as exceptions.
+	     * @param {Any*} promise at the end of a chain of promises
+	     * @returns nothing
+	     */
+	    Q.done = function (object, fulfilled, rejected, progress) {
+	        return Q(object).done(fulfilled, rejected, progress);
+	    };
+
+	    Promise.prototype.done = function (fulfilled, rejected, progress) {
+	        var onUnhandledError = function onUnhandledError(error) {
+	            // forward to a future turn so that ``when``
+	            // does not catch it and turn it into a rejection.
+	            Q.nextTick(function () {
+	                makeStackTraceLong(error, promise);
+	                if (Q.onerror) {
+	                    Q.onerror(error);
+	                } else {
+	                    throw error;
+	                }
+	            });
+	        };
+
+	        // Avoid unnecessary `nextTick`ing via an unnecessary `when`.
+	        var promise = fulfilled || rejected || progress ? this.then(fulfilled, rejected, progress) : this;
+
+	        if ((typeof process === "undefined" ? "undefined" : _typeof(process)) === "object" && process && process.domain) {
+	            onUnhandledError = process.domain.bind(onUnhandledError);
+	        }
+
+	        promise.then(void 0, onUnhandledError);
+	    };
+
+	    /**
+	     * Causes a promise to be rejected if it does not get fulfilled before
+	     * some milliseconds time out.
+	     * @param {Any*} promise
+	     * @param {Number} milliseconds timeout
+	     * @param {Any*} custom error message or Error object (optional)
+	     * @returns a promise for the resolution of the given promise if it is
+	     * fulfilled before the timeout, otherwise rejected.
+	     */
+	    Q.timeout = function (object, ms, error) {
+	        return Q(object).timeout(ms, error);
+	    };
+
+	    Promise.prototype.timeout = function (ms, error) {
+	        var deferred = defer();
+	        var timeoutId = setTimeout(function () {
+	            if (!error || "string" === typeof error) {
+	                error = new Error(error || "Timed out after " + ms + " ms");
+	                error.code = "ETIMEDOUT";
+	            }
+	            deferred.reject(error);
+	        }, ms);
+
+	        this.then(function (value) {
+	            clearTimeout(timeoutId);
+	            deferred.resolve(value);
+	        }, function (exception) {
+	            clearTimeout(timeoutId);
+	            deferred.reject(exception);
+	        }, deferred.notify);
+
+	        return deferred.promise;
+	    };
+
+	    /**
+	     * Returns a promise for the given value (or promised value), some
+	     * milliseconds after it resolved. Passes rejections immediately.
+	     * @param {Any*} promise
+	     * @param {Number} milliseconds
+	     * @returns a promise for the resolution of the given promise after milliseconds
+	     * time has elapsed since the resolution of the given promise.
+	     * If the given promise rejects, that is passed immediately.
+	     */
+	    Q.delay = function (object, timeout) {
+	        if (timeout === void 0) {
+	            timeout = object;
+	            object = void 0;
+	        }
+	        return Q(object).delay(timeout);
+	    };
+
+	    Promise.prototype.delay = function (timeout) {
+	        return this.then(function (value) {
+	            var deferred = defer();
+	            setTimeout(function () {
+	                deferred.resolve(value);
+	            }, timeout);
+	            return deferred.promise;
+	        });
+	    };
+
+	    /**
+	     * Passes a continuation to a Node function, which is called with the given
+	     * arguments provided as an array, and returns a promise.
+	     *
+	     *      Q.nfapply(FS.readFile, [__filename])
+	     *      .then(function (content) {
+	     *      })
+	     *
+	     */
+	    Q.nfapply = function (callback, args) {
+	        return Q(callback).nfapply(args);
+	    };
+
+	    Promise.prototype.nfapply = function (args) {
+	        var deferred = defer();
+	        var nodeArgs = array_slice(args);
+	        nodeArgs.push(deferred.makeNodeResolver());
+	        this.fapply(nodeArgs).fail(deferred.reject);
+	        return deferred.promise;
+	    };
+
+	    /**
+	     * Passes a continuation to a Node function, which is called with the given
+	     * arguments provided individually, and returns a promise.
+	     * @example
+	     * Q.nfcall(FS.readFile, __filename)
+	     * .then(function (content) {
+	     * })
+	     *
+	     */
+	    Q.nfcall = function (callback /*...args*/) {
+	        var args = array_slice(arguments, 1);
+	        return Q(callback).nfapply(args);
+	    };
+
+	    Promise.prototype.nfcall = function () /*...args*/{
+	        var nodeArgs = array_slice(arguments);
+	        var deferred = defer();
+	        nodeArgs.push(deferred.makeNodeResolver());
+	        this.fapply(nodeArgs).fail(deferred.reject);
+	        return deferred.promise;
+	    };
+
+	    /**
+	     * Wraps a NodeJS continuation passing function and returns an equivalent
+	     * version that returns a promise.
+	     * @example
+	     * Q.nfbind(FS.readFile, __filename)("utf-8")
+	     * .then(console.log)
+	     * .done()
+	     */
+	    Q.nfbind = Q.denodeify = function (callback /*...args*/) {
+	        var baseArgs = array_slice(arguments, 1);
+	        return function () {
+	            var nodeArgs = baseArgs.concat(array_slice(arguments));
+	            var deferred = defer();
+	            nodeArgs.push(deferred.makeNodeResolver());
+	            Q(callback).fapply(nodeArgs).fail(deferred.reject);
+	            return deferred.promise;
+	        };
+	    };
+
+	    Promise.prototype.nfbind = Promise.prototype.denodeify = function () /*...args*/{
+	        var args = array_slice(arguments);
+	        args.unshift(this);
+	        return Q.denodeify.apply(void 0, args);
+	    };
+
+	    Q.nbind = function (callback, thisp /*...args*/) {
+	        var baseArgs = array_slice(arguments, 2);
+	        return function () {
+	            var nodeArgs = baseArgs.concat(array_slice(arguments));
+	            var deferred = defer();
+	            nodeArgs.push(deferred.makeNodeResolver());
+	            function bound() {
+	                return callback.apply(thisp, arguments);
+	            }
+	            Q(bound).fapply(nodeArgs).fail(deferred.reject);
+	            return deferred.promise;
+	        };
+	    };
+
+	    Promise.prototype.nbind = function () /*thisp, ...args*/{
+	        var args = array_slice(arguments, 0);
+	        args.unshift(this);
+	        return Q.nbind.apply(void 0, args);
+	    };
+
+	    /**
+	     * Calls a method of a Node-style object that accepts a Node-style
+	     * callback with a given array of arguments, plus a provided callback.
+	     * @param object an object that has the named method
+	     * @param {String} name name of the method of object
+	     * @param {Array} args arguments to pass to the method; the callback
+	     * will be provided by Q and appended to these arguments.
+	     * @returns a promise for the value or error
+	     */
+	    Q.nmapply = // XXX As proposed by "Redsandro"
+	    Q.npost = function (object, name, args) {
+	        return Q(object).npost(name, args);
+	    };
+
+	    Promise.prototype.nmapply = // XXX As proposed by "Redsandro"
+	    Promise.prototype.npost = function (name, args) {
+	        var nodeArgs = array_slice(args || []);
+	        var deferred = defer();
+	        nodeArgs.push(deferred.makeNodeResolver());
+	        this.dispatch("post", [name, nodeArgs]).fail(deferred.reject);
+	        return deferred.promise;
+	    };
+
+	    /**
+	     * Calls a method of a Node-style object that accepts a Node-style
+	     * callback, forwarding the given variadic arguments, plus a provided
+	     * callback argument.
+	     * @param object an object that has the named method
+	     * @param {String} name name of the method of object
+	     * @param ...args arguments to pass to the method; the callback will
+	     * be provided by Q and appended to these arguments.
+	     * @returns a promise for the value or error
+	     */
+	    Q.nsend = // XXX Based on Mark Miller's proposed "send"
+	    Q.nmcall = // XXX Based on "Redsandro's" proposal
+	    Q.ninvoke = function (object, name /*...args*/) {
+	        var nodeArgs = array_slice(arguments, 2);
+	        var deferred = defer();
+	        nodeArgs.push(deferred.makeNodeResolver());
+	        Q(object).dispatch("post", [name, nodeArgs]).fail(deferred.reject);
+	        return deferred.promise;
+	    };
+
+	    Promise.prototype.nsend = // XXX Based on Mark Miller's proposed "send"
+	    Promise.prototype.nmcall = // XXX Based on "Redsandro's" proposal
+	    Promise.prototype.ninvoke = function (name /*...args*/) {
+	        var nodeArgs = array_slice(arguments, 1);
+	        var deferred = defer();
+	        nodeArgs.push(deferred.makeNodeResolver());
+	        this.dispatch("post", [name, nodeArgs]).fail(deferred.reject);
+	        return deferred.promise;
+	    };
+
+	    /**
+	     * If a function would like to support both Node continuation-passing-style and
+	     * promise-returning-style, it can end its internal promise chain with
+	     * `nodeify(nodeback)`, forwarding the optional nodeback argument.  If the user
+	     * elects to use a nodeback, the result will be sent there.  If they do not
+	     * pass a nodeback, they will receive the result promise.
+	     * @param object a result (or a promise for a result)
+	     * @param {Function} nodeback a Node.js-style callback
+	     * @returns either the promise or nothing
+	     */
+	    Q.nodeify = nodeify;
+	    function nodeify(object, nodeback) {
+	        return Q(object).nodeify(nodeback);
+	    }
+
+	    Promise.prototype.nodeify = function (nodeback) {
+	        if (nodeback) {
+	            this.then(function (value) {
+	                Q.nextTick(function () {
+	                    nodeback(null, value);
+	                });
+	            }, function (error) {
+	                Q.nextTick(function () {
+	                    nodeback(error);
+	                });
+	            });
+	        } else {
+	            return this;
+	        }
+	    };
+
+	    Q.noConflict = function () {
+	        throw new Error("Q.noConflict only works when Q is used as a global");
+	    };
+
+	    // All code before this point will be filtered from stack traces.
+	    var qEndingLine = captureLine();
+
+	    return Q;
+	});
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)(module)))
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = function (module) {
+		if (!module.webpackPolyfill) {
+			module.deprecate = function () {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	};
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	/*
+	 * Copyright (c) 2013 Adobe Systems Incorporated. All rights reserved.
+	 *  
+	 * Permission is hereby granted, free of charge, to any person obtaining a
+	 * copy of this software and associated documentation files (the "Software"), 
+	 * to deal in the Software without restriction, including without limitation 
+	 * the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+	 * and/or sell copies of the Software, and to permit persons to whom the 
+	 * Software is furnished to do so, subject to the following conditions:
+	 *  
+	 * The above copyright notice and this permission notice shall be included in
+	 * all copies or substantial portions of the Software.
+	 *  
+	 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	 * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+	 * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	 * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+	 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+	 * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+	 * DEALINGS IN THE SOFTWARE.
+	 * 
+	 */
+
+	(function () {
+	    "use strict";
+
+	    // Dependencies
+	    // ------------
+
+	    var crypto = __webpack_require__(9);
+
+	    // Constants
+	    // ---------
+
+	    var SALT = "Adobe Photoshop",
+	        NUM_ITERATIONS = 1000,
+	        ALGORITHM = "des-ede3-cbc",
+	        KEY_LENGTH = 24,
+	        IV = new Buffer("000000005d260000", "hex"); // 0000 0000 5d26 0000    
+
+	    /**
+	     * PSCrypto Class
+	     * 
+	     * @constructor
+	     */
+	    function PSCrypto(derivedKey) {
+	        this._derivedKey = derivedKey;
+	    }
+
+	    PSCrypto.prototype.decipher = function (buf) {
+	        var d = crypto.createDecipheriv(ALGORITHM, this._derivedKey, IV);
+	        return new Buffer(d.update(buf, "binary", "binary") + d.final("binary"), "binary");
+	    };
+
+	    PSCrypto.prototype.cipher = function (buf) {
+	        var c = crypto.createCipheriv(ALGORITHM, this._derivedKey, IV);
+	        return new Buffer(c.update(buf, "binary", "binary") + c.final("binary"), "binary");
+	    };
+
+	    // Factory Functions
+	    // -----------------
+
+	    function createPSCrypto(password, callback) {
+	        crypto.pbkdf2(password, SALT, NUM_ITERATIONS, KEY_LENGTH, function (err, derivedKey) {
+	            if (err) {
+	                callback(err, null);
+	            } else {
+	                callback(null, new PSCrypto(derivedKey));
+	            }
+	        });
+	    }
+
+	    // Public Interface
+	    // ================
+
+	    exports.createPSCrypto = createPSCrypto;
+	})();
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	module.exports = require("crypto");
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	module.exports = require("fs");
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	/*
 	 *
 	 *  Photoshop-Connection
 	 *  Node.js module for connecting to Adobe Photoshop Server.
@@ -44,8 +2912,42 @@ module.exports=function(e){function t(r){if(n[r])return n[r].exports;var o=n[r]=
 	 * 
 	 *
 	 *  @link https://github.com/antonio-gomez/photoshop-connection
-	 *  @version v1.0.0
+	 *  @version v1.1.0
 	 *  @license MIT
 	 *
 	 */
-"use strict";function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var o=function(){function e(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,n,r){return n&&e(t.prototype,n),r&&e(t,r),t}}(),i=n(4);t.PhotoshopClient=function(){function e(t){r(this,e),this.options=t,this._photoshop=null}return o(e,[{key:"connectToPhotoshop",value:function(){var e=this;return this._photoshop=i.createClient(this.options),new Promise(function(t,n){e._photoshop.once("connect",function(){console.log("Connected to Photoshop on port "+e.options.port),t(e._photoshop)}),e._photoshop.on("error",function(e){n(e)})})}}]),e}()},function(e,t,n){"use strict";!function(){function e(e,t,n){if(e.length>=t)return e;var r=new Buffer(t);return n?e.copy(r,0,0,n):e.copy(r),r}function r(e,t){var n=Math.pow(10,t);return Math.round(n*e)/n}function o(e,t,n){var r=this;if(!(r instanceof o))return new o(e,t,n);var i=a;e.hasOwnProperty("password")&&(i=e.password),e.hasOwnProperty("port")&&(r._port=e.port),e.hasOwnProperty("hostname")&&(r._hostname=e.hostname),e.hasOwnProperty("inputFd")&&(r._inputFd=e.inputFd),e.hasOwnProperty("outputFd")&&(r._outputFd=e.outputFd),r._logger=n,r._receiveBuffer=new Buffer(N),r._receivedBytes=0,r._writeQueue=[],t&&this.once("connect",t);var c=null,u=null;if("number"==typeof r._inputFd&&"number"==typeof r._outputFd||"string"==typeof r._inputFd&&"string"==typeof r._outputFd){c=r._connectPipe();var s=f.defer();s.resolve(),u=s.promise}else if(r._hostname&&"number"==typeof r._port)c=r._connectSocket(),u=r._initCrypto(i);else{var p=f.defer();p.reject(),c=p.promise}f.all([c,u]).done(function(){r.emit("connect")},function(e){r.emit("error",e),r.disconnect()})}function i(e,t,n){return new o(e,t,n)}var c=n(10),u=n(7).EventEmitter,s=n(9),f=n(1),p=n(5),a="password",l=49494,d="127.0.0.1",h=1e3,y={NONE:0,CONNECTING:1,OPEN:2,CLOSING:3,CLOSED:4,DESTROYED:5},v=0,m=4,_=4,w=m+_,k=12,g=0,S=4,b=8,B=16777216,j=1,x=1,E=2,T=3,O=4,P=6,C=0,N=65536,D=["","[ActionDescriptor]","Yep, still alive"];c.inherits(o,u),o.prototype._port=l,o.prototype._hostname=d,o.prototype._connectionState=y.NONE,o.prototype._lastMessageID=0,o.prototype._crypto=null,o.prototype._receiveBuffer=null,o.prototype._receivedBytes=0,o.prototype._writeQueue=null,o.prototype._commandDeferreds=null,o.prototype._initCrypto=function(e){var t=this,n=f.defer();return p.createPSCrypto(e,function(e,r){e?n.reject(e):(t._crypto=r,n.resolve())}),n.promise},o.prototype._connectPipe=function(){var t=this,r=n(8),o=!1;try{t._connectionState=y.CONNECTING,"number"==typeof t._inputFd?t._readStream=r.createReadStream(null,{fd:t._inputFd}):(t.emit("info","using named read pipe "+t._inputFd),t._readStream=r.createReadStream(t._inputFd)),t._readStream.on("data",function(n){var r=0===t._receivedBytes,o=n.length+t._receivedBytes;t._receiveBuffer=e(t._receiveBuffer,o),n.copy(t._receiveBuffer,t._receivedBytes),t._receivedBytes+=n.length,t._processReceiveBuffer(r)}),t._readStream.on("error",function(e){t.emit("error","Pipe read error: "+e),t.disconnect()}),t._readStream.on("close",function(){t._connectionState=y.CLOSED,t.emit("close")}),t._readStream.resume(),"number"==typeof t._outputFd?t._writeStream=r.createWriteStream(null,{fd:t._outputFd}):(t.emit("info","using named write pipe "+t._outputFd),t._writeStream=r.createWriteStream(t._outputFd)),t._writeStream.on("error",function(e){t.emit("error","Pipe write error: "+e),t.disconnect()}),t._writeStream.on("close",function(){t._connectionState=y.CLOSED,t.emit("close")}),t._writeStream.on("drain",function(){t._doPendingWrites()}),o=!0}catch(e){t.emit("error","Connect Pipe error: "+e),t.disconnect()}return o},o.prototype._connectSocket=function(){var t=this,n=f.defer();return t._socket=new s.Socket,t._connectionState=y.CONNECTING,t._socket.connect(t._port,t._hostname),t._socket.on("connect",function(){t._socket.setKeepAlive(!0,h),t._socket.setNoDelay(),n.resolve(t),t._writeStream=t._socket}),t._socket.on("error",function(e){n.promise.isPending()&&n.reject(e),t.emit("error","Socket error: "+e),t.disconnect()}),t._socket.on("close",function(){t._connectionState=y.CLOSED,t.emit("close")}),t._socket.on("data",function(n){var r=0===t._receivedBytes,o=n.length+t._receivedBytes;t._receiveBuffer=e(t._receiveBuffer,o),n.copy(t._receiveBuffer,t._receivedBytes),t._receivedBytes+=n.length,t._processReceiveBuffer(r)}),t._socket.on("drain",function(){t._doPendingWrites()}),n.promise},o.prototype._writeWhenFree=function(e){var t=this;t._writeQueue.push(e),process.nextTick(function(){t._doPendingWrites()})},o.prototype._doPendingWrites=function(){if(this._writeStream&&this._writeQueue.length>0&&!this._writeStream.busy){var e=this._writeQueue.shift(),t=this._writeStream.write(e);t&&this._writeQueue.length>0&&this._doPendingWrites()}this._writeStream&&this._writeQueue.length>0&&process.nextTick(this._doPendingWrites.bind(this))},o.prototype.isConnected=function(){return this._connectionState===y.OPEN},o.prototype.disconnect=function(e){if(e||(e=function(){}),!this._socket){if(this._readStream){try{this._readStream.close()}catch(e){}this._readStream=null}if(this._writeStream){try{this._writeStream.close()}catch(e){}this._writeStream=null}return this._connectionState=y.CLOSED,process.nextTick(e),!0}var t=this._connectionState;switch(t){case y.NONE:return this._connectionState=y.CLOSED,process.nextTick(e),!0;case y.CONNECTING:return this._connectionState=y.CLOSING,this._socket.once("close",e),this._socket.end(),!0;case y.OPEN:return this._connectionState=y.CLOSING,this._socket.once("close",e),this._socket.end(),!0;case y.CLOSING:return this._socket.once("close",e),!0;case y.CLOSED:return process.nextTick(e),!0;case y.DESTROYED:return process.nextTick(e),!0}},o.prototype.destroy=function(){this._connectionState=y.DESTROYED,this._socket&&this._socket.destroy()},o.prototype._sendMessage=function(e){var t=this._crypto?this._crypto.cipher(e):e,n=new Buffer(w),r=t.length+_;n.writeUInt32BE(r,v),n.writeInt32BE(C,m),this._writeWhenFree(n),this._writeWhenFree(t)},o.prototype.sendKeepAlive=function(){var e=this._lastMessageID=(this._lastMessageID+1)%B,t=new Buffer(k);return t.writeUInt32BE(j,g),t.writeUInt32BE(e,S),t.writeUInt32BE(P,b),this._sendMessage(t),e},o.prototype.sendCommand=function(e){var t=this._lastMessageID=(this._lastMessageID+1)%B,n=new Buffer(e,"utf8"),r=new Buffer(n.length+k);return r.writeUInt32BE(j,g),r.writeUInt32BE(t,S),r.writeUInt32BE(E,b),n.copy(r,k),this._sendMessage(r),t},o.prototype._processReceiveBuffer=function(t){if(t&&this._receivedBytes>0&&(this.messageStartTime=(new Date).getTime()),!(this._receivedBytes<w)){var n=this._receiveBuffer.readInt32BE(m);if(n!==C)return console.error("Communication error: "+n),this.emit("communicationsError","Photoshop communication error: "+n),void this.disconnect();var o=this._receiveBuffer.readUInt32BE(v),i=o+m;if(this._receiveBuffer=e(this._receiveBuffer,i,this._receivedBytes),!(this._receivedBytes<i)){var c=(new Date).getTime()-this.messageStartTime;if(c>10){var u=this._receivedBytes/1024,s=u/(c/1e3);this._logger.info(c+"ms to receive "+r(u,1)+" kB ("+r(s,1)+" kB/s)")}var f=this._receiveBuffer.slice(w,i),p=this._receivedBytes-i,a=Math.max(N,p),l=this._receiveBuffer;this._receiveBuffer=new Buffer(a),p>0&&l.copy(this._receiveBuffer,0,i,this._receivedBytes),this._receivedBytes=p;var d=(new Date).getTime(),h=this._crypto?this._crypto.decipher(f):f;c=(new Date).getTime()-d,c>10&&this._logger.info(c+"ms to decrypt buffer"),this._processMessage(h),this._processReceiveBuffer(!0)}}},o.prototype._processMessage=function(e){var t=e.readUInt32BE(g),n=e.readUInt32BE(S),r=e.readUInt32BE(b),o=e.slice(k),i={protocolVersion:t,id:n,type:r,body:o};if(t!==j)this.emit("communicationsError","unknown protocol version",t);else if(r===E){var c=o.toString("utf8"),u=c.split("\r"),s=null,f=null;if(2===u.length&&(s=u[0]),f=u[u.length-1],D.indexOf(f)===-1)try{f=JSON.parse(f)}catch(e){}s?this.emit("event",n,s,f,i):this.emit("message",n,f,i)}else r===T?this.emit("pixmap",n,o,i):r===O?this.emit("iccProfile",n,o,i):r===x?this.emit("error",{id:n,body:o.toString("utf8")}):this.emit("communicationsError","unknown message type",r)},t.PhotoshopClient=o,t.createClient=i}()},function(e,t,n){"use strict";!function(){function e(e){this._derivedKey=e}function r(t,n){o.pbkdf2(t,i,c,s,function(t,r){t?n(t,null):n(null,new e(r))})}var o=n(6),i="Adobe Photoshop",c=1e3,u="des-ede3-cbc",s=24,f=new Buffer("000000005d260000","hex");e.prototype.decipher=function(e){var t=o.createDecipheriv(u,this._derivedKey,f);return new Buffer(t.update(e,"binary","binary")+t.final("binary"),"binary")},e.prototype.cipher=function(e){var t=o.createCipheriv(u,this._derivedKey,f);return new Buffer(t.update(e,"binary","binary")+t.final("binary"),"binary")},t.createPSCrypto=r}()},function(e,t){e.exports=require("crypto")},function(e,t){e.exports=require("events")},function(e,t){e.exports=require("fs")},function(e,t){e.exports=require("net")},function(e,t){e.exports=require("util")}]);
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var PhotoshopHelper = exports.PhotoshopHelper = function () {
+	  function PhotoshopHelper(photoshop) {
+	    _classCallCheck(this, PhotoshopHelper);
+
+	    this._photoshop = photoshop;
+	  }
+
+	  _createClass(PhotoshopHelper, [{
+	    key: 'evaluateESString',
+	    value: function evaluateESString(params, str) {
+	      this._photoshop.sendCommand(str);
+	    }
+	  }, {
+	    key: 'evaluateESFile',
+	    value: function evaluateESFile(params, filepath) {
+	      //
+	    }
+	  }]);
+
+	  return PhotoshopHelper;
+	}();
+
+/***/ }
+/******/ ]);

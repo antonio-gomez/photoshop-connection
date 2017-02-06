@@ -6,7 +6,7 @@
  * 
  *
  *  @link https://github.com/antonio-gomez/photoshop-connection
- *  @version v0.0.0
+ *  @version v1.1.0
  *  @license MIT
  *
  */

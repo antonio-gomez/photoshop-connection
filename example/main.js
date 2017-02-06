@@ -6,7 +6,7 @@
  * 
  *
  *  @link https://github.com/antonio-gomez/photoshop-connection
- *  @version v1.0.0
+ *  @version v1.1.0
  *  @license MIT
  *
  */
@@ -23,7 +23,7 @@ let options = {
 
 photoshopConnection.createClient(options)
 	.then((photoshopClient) => {
-		photoshopClient.sendCommand(`alert('Hello from ExtendScript!');`)
+		return photoshopClient.evaluateESString(``, `alert("Hello from evaluate JSX!")`)
 	})
 	.catch((err) => {
 		console.log(`Connection Error: ${err}`)
